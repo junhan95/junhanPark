@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +11,16 @@
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <!-- ===== CURSOR GLOW ===== -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <!-- ===== NAVBAR ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -21,14 +28,34 @@
                 <span class="logo-bracket">&lt;</span>JP<span class="logo-bracket"> /&gt;</span>
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#timeline" class="nav-link">Career</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+                <li><a href="#timeline" class="nav-link" data-i18n="nav.career">Career</a></li>
+                <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
             </ul>
-            <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
-                <span></span><span></span><span></span>
-            </button>
+            <div class="nav-actions">
+                <!-- Theme Toggle -->
+                <button class="nav-icon-btn" id="themeToggle" aria-label="테마 변경">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        width="20" height="20">
+                        <circle cx="12" cy="12" r="5" />
+                        <path
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        width="20" height="20">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                    </svg>
+                </button>
+                <!-- Language Toggle -->
+                <button class="nav-icon-btn lang-btn" id="langToggle" aria-label="언어 변경">
+                    <span class="lang-label" id="langLabel">EN</span>
+                </button>
+                <!-- Mobile Menu -->
+                <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -38,24 +65,26 @@
         <div class="hero-glow hero-glow--1"></div>
         <div class="hero-glow hero-glow--2"></div>
         <div class="hero-content">
-            <p class="hero-greeting animate-fade-up">안녕하세요 👋 저는</p>
+            <p class="hero-greeting animate-fade-up" data-i18n="hero.greeting">안녕하세요 👋 저는</p>
             <h1 class="hero-name animate-fade-up delay-1">Junhan Park</h1>
             <div class="hero-typing-wrapper animate-fade-up delay-2">
                 <span class="hero-typing-prefix">&gt;&nbsp;</span>
                 <span class="hero-typing" id="heroTyping"></span>
                 <span class="hero-cursor">|</span>
             </div>
-            <p class="hero-desc animate-fade-up delay-3">
+            <p class="hero-desc animate-fade-up delay-3" data-i18n="hero.desc">
                 AI와 함께 코드를 작성하고, 아이디어를 현실로 만드는 것을 즐깁니다.<br>
                 Vibe Coding으로 더 빠르고, 더 창의적인 개발을 추구합니다.
             </p>
             <div class="hero-cta animate-fade-up delay-4">
                 <a href="#projects" class="btn btn--primary">
-                    <span>프로젝트 보기</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span data-i18n="hero.cta_projects">프로젝트 보기</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
                 </a>
                 <a href="#contact" class="btn btn--ghost">
-                    <span>연락하기</span>
+                    <span data-i18n="hero.cta_contact">연락하기</span>
                 </a>
             </div>
         </div>
@@ -71,22 +100,22 @@
     <section class="section about" id="about">
         <div class="container">
             <h2 class="section-title reveal">
-                <span class="section-title__accent">//</span> About Me
+                <span class="section-title__accent">//</span> <span data-i18n="about.title">About Me</span>
             </h2>
             <div class="about-grid">
                 <div class="about-text reveal">
-                    <p class="about-intro">
+                    <p class="about-intro" data-i18n="about.intro">
                         <span class="highlight">AI Vibe Coder</span>로서, 저는 인공지능 도구를 활용한
                         효율적이고 창의적인 개발 방식을 추구합니다.
                     </p>
-                    <p>
+                    <p data-i18n="about.desc">
                         복잡한 기술적 문제를 해결하는 것을 좋아하며, 사용자 경험을 최우선으로 생각합니다.
                         AI 코딩 어시스턴트와 함께 빠른 프로토타이핑부터 프로덕션 레벨의 애플리케이션까지
                         다양한 프로젝트를 진행하고 있습니다.
                     </p>
                 </div>
                 <div class="about-skills reveal delay-1">
-                    <h3 class="skills-title">Tech Stack</h3>
+                    <h3 class="skills-title" data-i18n="about.skills_title">Tech Stack</h3>
                     <div class="skills-grid">
                         <div class="skill-tag">JavaScript</div>
                         <div class="skill-tag">React</div>
@@ -110,15 +139,15 @@
     <section class="section timeline-section" id="timeline">
         <div class="container">
             <h2 class="section-title reveal">
-                <span class="section-title__accent">//</span> Career
+                <span class="section-title__accent">//</span> <span data-i18n="timeline.title">Career</span>
             </h2>
             <div class="timeline">
                 <div class="timeline-item reveal">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <span class="timeline-date">2024 — Present</span>
-                        <h3 class="timeline-role">AI Vibe Coder & 풀스택 개발자</h3>
-                        <p class="timeline-desc">
+                        <h3 class="timeline-role" data-i18n="timeline.role1">AI Vibe Coder & 풀스택 개발자</h3>
+                        <p class="timeline-desc" data-i18n="timeline.desc1">
                             AI 코딩 도구를 활용하여 다수의 웹 애플리케이션을 독립적으로 기획·개발·배포.
                             WiseQuery, Quectel Antenna Search, Pokédex 등 실서비스 운영 중.
                         </p>
@@ -128,8 +157,8 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <span class="timeline-date">2022 — 2024</span>
-                        <h3 class="timeline-role">웹 개발자</h3>
-                        <p class="timeline-desc">
+                        <h3 class="timeline-role" data-i18n="timeline.role2">웹 개발자</h3>
+                        <p class="timeline-desc" data-i18n="timeline.desc2">
                             React 기반 프론트엔드 개발 및 Node.js 백엔드 개발 경험.
                             사용자 중심의 UI/UX 설계와 성능 최적화에 집중.
                         </p>
@@ -139,8 +168,8 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <span class="timeline-date">2020 — 2022</span>
-                        <h3 class="timeline-role">소프트웨어 엔지니어</h3>
-                        <p class="timeline-desc">
+                        <h3 class="timeline-role" data-i18n="timeline.role3">소프트웨어 엔지니어</h3>
+                        <p class="timeline-desc" data-i18n="timeline.desc3">
                             소프트웨어 개발 및 시스템 설계 경험.
                             데이터 처리, API 개발 등 다양한 백엔드 기술 활용.
                         </p>
@@ -154,18 +183,24 @@
     <section class="section projects" id="projects">
         <div class="container">
             <h2 class="section-title reveal">
-                <span class="section-title__accent">//</span> Projects
+                <span class="section-title__accent">//</span> <span data-i18n="projects.title">Projects</span>
             </h2>
-            <p class="section-subtitle reveal">AI Vibe Coding으로 만든 프로젝트들</p>
+            <p class="section-subtitle reveal" data-i18n="projects.subtitle">AI Vibe Coding으로 만든 프로젝트들</p>
             <div class="projects-grid">
                 <!-- WiseQuery -->
                 <article class="project-card reveal">
                     <div class="project-card__image-wrapper">
-                        <img src="images/wisequery.png" alt="WiseQuery - AI 기반 지식 관리 플랫폼" class="project-card__image" loading="lazy">
+                        <img src="images/wisequery.png" alt="WiseQuery - AI 기반 지식 관리 플랫폼" class="project-card__image"
+                            loading="lazy">
                         <div class="project-card__overlay">
-                            <a href="https://wisequery.app/" target="_blank" rel="noopener noreferrer" class="project-card__link-btn">
-                                사이트 방문
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            <a href="https://wisequery.app/" target="_blank" rel="noopener noreferrer"
+                                class="project-card__link-btn">
+                                <span data-i18n="projects.visit">사이트 방문</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -176,7 +211,7 @@
                             <span class="tag">Full-Stack</span>
                         </div>
                         <h3 class="project-card__title">WiseQuery</h3>
-                        <p class="project-card__desc">
+                        <p class="project-card__desc" data-i18n="projects.wisequery_desc">
                             AI 기반 지식 관리 플랫폼. 프로젝트별로 대화를 정리하고,
                             고급 RAG 기술로 전체 지식 베이스에서 시맨틱 검색을 통해 답변을 얻을 수 있습니다.
                         </p>
@@ -186,11 +221,17 @@
                 <!-- Quectel Antenna Search -->
                 <article class="project-card reveal delay-1">
                     <div class="project-card__image-wrapper">
-                        <img src="images/quectel-antenna.png" alt="Quectel Antenna Search - 퀵텔 안테나 검색" class="project-card__image" loading="lazy">
+                        <img src="images/quectel-antenna.png" alt="Quectel Antenna Search - 퀵텔 안테나 검색"
+                            class="project-card__image" loading="lazy">
                         <div class="project-card__overlay">
-                            <a href="https://quectel-antenna.com/" target="_blank" rel="noopener noreferrer" class="project-card__link-btn">
-                                사이트 방문
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            <a href="https://quectel-antenna.com/" target="_blank" rel="noopener noreferrer"
+                                class="project-card__link-btn">
+                                <span data-i18n="projects.visit">사이트 방문</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -201,7 +242,7 @@
                             <span class="tag">SEO</span>
                         </div>
                         <h3 class="project-card__title">Quectel Antenna Search</h3>
-                        <p class="project-card__desc">
+                        <p class="project-card__desc" data-i18n="projects.quectel_desc">
                             퀵텔 안테나 검색 엔진. 모델명, 주파수, 태그, 스펙 등 다양한 조건으로
                             328개 이상의 안테나 제품을 빠르게 검색할 수 있습니다.
                         </p>
@@ -213,9 +254,14 @@
                     <div class="project-card__image-wrapper">
                         <img src="images/pokedex.png" alt="Pokédex - 포켓몬 도감" class="project-card__image" loading="lazy">
                         <div class="project-card__overlay">
-                            <a href="https://pokemon-drawing-book.com/" target="_blank" rel="noopener noreferrer" class="project-card__link-btn">
-                                사이트 방문
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                            <a href="https://pokemon-drawing-book.com/" target="_blank" rel="noopener noreferrer"
+                                class="project-card__link-btn">
+                                <span data-i18n="projects.visit">사이트 방문</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -226,7 +272,7 @@
                             <span class="tag">PokéAPI</span>
                         </div>
                         <h3 class="project-card__title">Pokédex</h3>
-                        <p class="project-card__desc">
+                        <p class="project-card__desc" data-i18n="projects.pokedex_desc">
                             포켓몬 도감 웹앱. 1세대부터 9세대까지 모든 포켓몬을 검색하고,
                             능력치, 진화 체인, 타입별 필터 등 다양한 기능을 제공합니다.
                         </p>
@@ -240,15 +286,17 @@
     <section class="section contact" id="contact">
         <div class="container">
             <h2 class="section-title reveal">
-                <span class="section-title__accent">//</span> Contact
+                <span class="section-title__accent">//</span> <span data-i18n="contact.title">Contact</span>
             </h2>
-            <p class="section-subtitle reveal">함께 작업하고 싶으시다면 언제든 연락 주세요!</p>
+            <p class="section-subtitle reveal" data-i18n="contact.subtitle">함께 작업하고 싶으시다면 언제든 연락 주세요!</p>
             <div class="contact-grid reveal delay-1">
                 <!-- GitHub -->
-                <a href="https://github.com/junhan95" target="_blank" rel="noopener noreferrer" class="sns-card" aria-label="GitHub">
+                <a href="https://github.com/junhan95" target="_blank" rel="noopener noreferrer" class="sns-card"
+                    aria-label="GitHub">
                     <div class="sns-card__icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            <path
+                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
                     </div>
                     <span class="sns-card__label">GitHub</span>
@@ -256,34 +304,39 @@
                 </a>
 
                 <!-- LinkedIn -->
-                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="sns-card" aria-label="LinkedIn">
+                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="sns-card"
+                    aria-label="LinkedIn">
                     <div class="sns-card__icon">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                         </svg>
                     </div>
                     <span class="sns-card__label">LinkedIn</span>
-                    <span class="sns-card__handle">Connect</span>
+                    <span class="sns-card__handle" data-i18n="contact.linkedin_handle">Connect</span>
                 </a>
 
                 <!-- Email -->
-                <a href="mailto:junhan@example.com" class="sns-card" aria-label="Email">
+                <a href="mailto:junhanpark95@gmail.com" class="sns-card" aria-label="Email">
                     <div class="sns-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
-                            <path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32"
+                            height="32">
+                            <path
+                                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                         </svg>
                     </div>
                     <span class="sns-card__label">Email</span>
-                    <span class="sns-card__handle">Contact me</span>
+                    <span class="sns-card__handle" data-i18n="contact.email_handle">Contact me</span>
                 </a>
 
-                <!-- Blog / Coffee -->
-                <a href="https://ctee.kr/place/pokemon" target="_blank" rel="noopener noreferrer" class="sns-card" aria-label="Buy me a coffee">
+                <!-- Coffee -->
+                <a href="https://ctee.kr/place/pokemon" target="_blank" rel="noopener noreferrer" class="sns-card"
+                    aria-label="Buy me a coffee">
                     <div class="sns-card__icon">
-                        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
-                            <path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.074-.96.108-1.382.146-1.177.08-2.358.082-3.536.006a22.228 22.228 0 01-1.157-.107c.574-.093 1.164-.142 1.741-.18 1.215-.082 2.436-.043 3.65.061.429.037.858.09 1.282.162.149.025.3.059.445.105.126.04.297.136.381.025.084-.11.037-.327-.005-.472l-.004-.024a.005.005 0 01.004-.003l.003.001c.192.168.272.461.178.717a.448.448 0 01-.165.222c.003.005-.002.013-.006.016l.002-.003c-.006.006.007-.002.005 0l.008-.005c-.002.002-.001.002-.001.002.007-.007.002 0-.003.007a.188.188 0 01-.035.03c-.107.073-.245.1-.366.138-.425.133-.878.175-1.315.255-.79.146-1.584.277-2.382.377a26.082 26.082 0 01-3.736.175 25.285 25.285 0 01-3.089-.27c-.358-.058-.739-.12-1.063-.29-.17-.09-.345-.221-.355-.425-.01-.186.12-.329.261-.432a2.348 2.348 0 011.112-.442c.575-.1 1.182-.092 1.765-.046a24.893 24.893 0 013.16.455c.036.007.07.015.107.022l-.107-.022zm-.04 1.887l-.04.001c-.027 0-.053.003-.08.005a3.98 3.98 0 00-.135.016c-.122.018-.223.054-.346.071-.122.017-.22.073-.337.105-.058.016-.118.026-.176.043l-.014.004c-.048.014-.091.035-.138.05-.01.003-.023.005-.033.009a1.277 1.277 0 00-.076.033l-.013.007c-.046.023-.088.052-.132.079l-.02.013c-.044.03-.084.066-.125.1-.023.02-.05.036-.072.057-.058.054-.108.115-.158.178a1.073 1.073 0 00-.083.123l-.009.015c-.034.06-.06.127-.084.194l-.007.019a1.002 1.002 0 00-.044.198c-.017.1-.015.2-.01.303.01.186.052.362.12.527.041.1.09.195.148.283l.011.017c.062.09.136.173.216.248a1.92 1.92 0 00.263.217c.045.031.092.057.14.082l.02.01c.053.027.108.048.165.065l.024.007c.052.015.104.025.157.031.018.002.036.005.054.006a1.19 1.19 0 00.177-.005l.024-.003a1.19 1.19 0 00.15-.035c.068-.022.134-.052.196-.089l.006-.004c.064-.037.123-.083.178-.134a1.283 1.283 0 00.156-.175l.008-.012c.044-.062.082-.13.114-.2.028-.063.049-.13.065-.199l.003-.016c.023-.11.03-.224.017-.337a.925.925 0 00-.061-.247c-.003-.008-.003-.017-.006-.025l.101-.112a.685.685 0 01.043-.04l.03-.024a.51.51 0 01.053-.034c.028-.015.053-.038.083-.046l-.014.005.003-.001c.06-.02.124-.035.188-.041a.67.67 0 01.065-.003h.02a.653.653 0 01.26.063c.04.02.074.048.11.073.025.018.053.032.076.053.03.028.053.063.08.094.019.023.043.042.06.068.025.039.04.085.06.127.014.03.033.057.044.089.015.044.019.094.026.14.005.032.015.063.016.096.002.059-.007.117-.017.175a.833.833 0 01-.044.148c-.01.026-.023.05-.036.075l.008-.016c-.022.044-.047.086-.075.126-.08.115-.178.216-.29.295a1.187 1.187 0 01-.114.068l-.026.013c-.037.017-.076.03-.115.041a.94.94 0 01-.176.032h-.008a.73.73 0 01-.085-.003l-.024-.004a.837.837 0 01-.127-.035.565.565 0 01-.076-.035l-.007-.004a.592.592 0 01-.063-.043l-.012-.01a.53.53 0 01-.06-.053l-.002-.003a.586.586 0 01-.099-.142l-.008-.018a.625.625 0 01-.045-.148v-.009a.752.752 0 01.003-.17c.004-.03.014-.056.021-.085.01-.038.02-.076.037-.112l.005-.012c.019-.037.044-.07.068-.104.033-.047.064-.096.104-.137a1.13 1.13 0 01.106-.092l.006-.005c.006-.005.012-.008.018-.013.11-.076.237-.127.36-.168.066-.022.131-.045.197-.063l.019-.005c.059-.015.12-.024.179-.037.103-.02.207-.038.311-.051.28-.035.563-.047.846-.04.131.003.262.013.393.025.065.006.129.015.194.024.042.006.085.007.127.015.042.008.08.024.122.034l.019.005c.04.01.082.014.122.027.002 0 .003.002.005.002a2.89 2.89 0 01.177.069l.008.003c.103.046.195.106.283.174l.005.004c.15.12.276.27.37.44l.011.022c.047.088.084.182.113.28.017.058.028.118.04.177v.003c.013.082.02.166.016.25a1.38 1.38 0 01-.047.31c-.01.034-.026.065-.038.098a1.23 1.23 0 01-.121.251c-.027.04-.058.076-.088.114-.048.06-.092.124-.147.178-.066.066-.144.12-.218.176-.084.063-.17.118-.262.163a2.66 2.66 0 01-.556.19c-.04.009-.08.013-.12.02l-.003.001c-.069.01-.137.025-.207.03a3.005 3.005 0 01-.3.01l-.036-.002c-.1-.003-.2-.013-.299-.03a2.06 2.06 0 01-.268-.074 1.642 1.642 0 01-.093-.036c-.051-.022-.103-.04-.152-.066a1.726 1.726 0 01-.287-.202 1.598 1.598 0 01-.162-.163l-.013-.016c-.03-.037-.057-.077-.082-.119l.008.014c-.028-.046-.053-.094-.073-.145a1.08 1.08 0 01-.058-.2c-.014-.07-.02-.14-.02-.212.001-.074.008-.148.023-.22l.001-.003c.022-.107.063-.208.116-.302.066-.115.145-.22.238-.312l.073-.068c.03-.026.064-.047.096-.07.04-.028.079-.061.122-.083l.007-.003c.025-.013.054-.02.08-.03.038-.016.074-.037.114-.048l.021-.006c.023-.006.048-.006.072-.01a.408.408 0 01.073-.01h.024c.048 0 .094.007.14.016.028.006.055.016.083.024a.624.624 0 01.088.039c.013.007.028.01.04.019l.093.07.013.012a.477.477 0 01.074.098l.002.003.002.005a.404.404 0 01.036.086.281.281 0 01.02.097l-.002.034a.246.246 0 01-.024.073.198.198 0 01-.094.098c-.017.008-.035.012-.053.016a.193.193 0 01-.112-.019l-.005-.003-.006-.004-.01-.007a.188.188 0 01-.037-.037l-.01-.014-.002-.004a.13.13 0 01-.012-.029l-.002-.006-.001-.008v-.02c0-.003.003-.006.003-.01l.002-.005c.002-.005.007-.008.01-.013V8.83l-.001.001c-.003.003-.006.004-.01.007l-.02.009a.164.164 0 01-.02.006h-.005l-.022.001h-.005c-.008 0-.016-.002-.024-.004-.005-.002-.011-.002-.016-.004l-.002-.001a.133.133 0 01-.02-.01c-.008-.006-.016-.01-.024-.018a.232.232 0 01-.036-.047c-.003-.006-.009-.01-.012-.016zm2.635 4.203v.006l-.002.043c-.003.043-.01.086-.021.127a1.094 1.094 0 01-.268.48c-.074.077-.16.143-.25.2-.09.056-.186.1-.286.134a2.127 2.127 0 01-.642.087h-.034a2.305 2.305 0 01-.388-.042 1.702 1.702 0 01-.316-.107l-.007-.003a1.416 1.416 0 01-.243-.147 1.246 1.246 0 01-.193-.185c-.028-.034-.055-.07-.077-.108a.912.912 0 01-.11-.266.825.825 0 01-.029-.223l.002-.058c.004-.054.013-.108.03-.16a.797.797 0 01.317-.437c.075-.05.157-.089.243-.118a1.502 1.502 0 01.578-.073c.06.003.12.01.179.02.174.03.34.088.495.168.074.039.144.084.208.137a.96.96 0 01.274.365c.028.07.046.144.053.22l.001.026v.015zM4.073 12.413l-.032.012-.074.031c-.05.022-.1.047-.147.076a1.268 1.268 0 00-.378.356c-.041.063-.074.131-.1.203a.9.9 0 00-.052.256l-.002.036v.02c.002.08.014.159.038.235a.862.862 0 00.342.46c.07.049.147.087.229.116.29.1.604.122.907.093a2.25 2.25 0 00.387-.078l.003-.001c.102-.03.201-.068.297-.112a1.39 1.39 0 00.235-.142c.06-.046.116-.098.163-.158a.826.826 0 00.126-.226.762.762 0 00.044-.226l-.001-.04a.702.702 0 00-.027-.148.815.815 0 00-.143-.284 1.074 1.074 0 00-.379-.303 1.888 1.888 0 00-.475-.175 2.415 2.415 0 00-.494-.058l-.065.001a2.073 2.073 0 00-.384.052v-.001zm.612 6.105c.063.086.128.17.204.244.088.087.185.163.29.226.11.067.228.12.35.163.137.047.279.078.424.094.073.008.146.012.22.012.063 0 .127-.003.19-.01.077-.008.153-.021.228-.04a1.543 1.543 0 00.403-.157c.052-.03.101-.065.147-.104a.914.914 0 00.216-.284.764.764 0 00.076-.27l.002-.034v-.012a.71.71 0 00-.032-.2.73.73 0 00-.29-.39 1.138 1.138 0 00-.288-.147 2.17 2.17 0 00-.6-.116l-.072-.002c-.158-.003-.315.014-.47.047a2.023 2.023 0 00-.39.137c-.11.053-.213.119-.303.199a.922.922 0 00-.152.19.74.74 0 00-.089.24l-.003.024v.028c.001.044.006.088.016.131a.729.729 0 00.035.12c.007.016.016.031.024.047l.063.082z"/>
-                            <path d="M7.5 18.5s-.5 2 1.5 3.5c2 1.5 3.5 1 3.5 1s1.5.5 3.5-1 1.5-3.5 1.5-3.5" stroke="currentColor" stroke-width="1" fill="none"/>
-                            <path d="M6 12.5c-.5-3-.5-6 1.5-8s6-2.5 8.5-.5 3 5 2.5 8.5" stroke="currentColor" stroke-width="1" fill="none"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32"
+                            height="32">
+                            <path
+                                d="M17 8h1a4 4 0 010 8h-1M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM6 2v3M10 2v3M14 2v3" />
                         </svg>
                     </div>
                     <span class="sns-card__label">Buy me a coffee</span>
@@ -300,7 +353,7 @@
                 <p class="footer-logo">
                     <span class="logo-bracket">&lt;</span>Junhan Park<span class="logo-bracket"> /&gt;</span>
                 </p>
-                <p class="footer-text">Built with 💜 and AI Vibe Coding</p>
+                <p class="footer-text" data-i18n="footer.text">Built with 💜 and AI Vibe Coding</p>
                 <p class="footer-copy">&copy; 2026 Junhan Park. All rights reserved.</p>
             </div>
         </div>
@@ -308,4 +361,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
