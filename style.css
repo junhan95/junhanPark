@@ -86,12 +86,7 @@
         linear-gradient(90deg, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
 }
 
-[data-theme="light"] .cursor-glow {
-    background: radial-gradient(circle,
-            rgba(124, 58, 237, 0.08) 0%,
-            rgba(37, 99, 235, 0.05) 30%,
-            transparent 60%);
-}
+
 
 [data-theme="light"] .tag {
     background: rgba(124, 58, 237, 0.08);
@@ -1087,29 +1082,16 @@ img {
 }
 
 /* ========================================
-   CURSOR GLOW (Mouse-following ambient light)
+   PARTICLE CANVAS (Mouse-following confetti particles)
    ======================================== */
-.cursor-glow {
+#particleCanvas {
     position: fixed;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    background: radial-gradient(circle,
-            rgba(124, 58, 237, 0.12) 0%,
-            rgba(37, 99, 235, 0.08) 30%,
-            rgba(34, 211, 238, 0.04) 50%,
-            transparent 70%);
-    transform: translate(-50%, -50%);
-    will-change: left, top;
-    mix-blend-mode: screen;
-}
-
-.cursor-glow.active {
-    opacity: 1;
 }
 
 /* ========================================
