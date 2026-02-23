@@ -37,7 +37,7 @@
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-    {
+    [{
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Junhan Park",
@@ -50,8 +50,29 @@
             "https://github.com/junhan95"
         ],
         "email": "junhanpark95@gmail.com"
-    }
+    },{
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Junhan Park Portfolio",
+        "url": "https://junhanpark.work/",
+        "description": "AI Vibe Coding으로 아이디어를 현실로 만드는 풀스택 개발자 박준한의 포트폴리오",
+        "inLanguage": ["ko", "en"]
+    }]
     </script>
+    <noscript>
+        <style>
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+
+            .animate-fade-up {
+                opacity: 1;
+                transform: none;
+                animation: none;
+            }
+        </style>
+    </noscript>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,6 +84,9 @@
 </head>
 
 <body>
+    <!-- ===== SCROLL PROGRESS BAR ===== -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
     <!-- ===== PARTICLE CANVAS ===== -->
     <canvas id="particleCanvas"></canvas>
 
@@ -142,10 +166,11 @@
     </section>
 
     <!-- ===== ABOUT ===== -->
-    <section class="section about" id="about">
+    <section class="section about" id="about" aria-labelledby="about-title">
         <div class="container">
             <h2 class="section-title reveal">
-                <span class="section-title__accent">//</span> <span data-i18n="about.title">About Me</span>
+                <span class="section-title__accent">//</span> <span id="about-title" data-i18n="about.title">About
+                    Me</span>
             </h2>
             <div class="about-grid">
                 <div class="about-text reveal">
@@ -181,10 +206,11 @@
     </section>
 
     <!-- ===== TIMELINE ===== -->
-    <section class="section timeline-section" id="timeline">
+    <section class="section timeline-section" id="timeline" aria-labelledby="timeline-title">
         <div class="container">
             <h2 class="section-title reveal">
-                <span class="section-title__accent">//</span> <span data-i18n="timeline.title">Career</span>
+                <span class="section-title__accent">//</span> <span id="timeline-title"
+                    data-i18n="timeline.title">Career</span>
             </h2>
             <div class="timeline">
                 <div class="timeline-item reveal">
@@ -225,10 +251,11 @@
     </section>
 
     <!-- ===== PROJECTS ===== -->
-    <section class="section projects" id="projects">
+    <section class="section projects" id="projects" aria-labelledby="projects-title">
         <div class="container">
             <h2 class="section-title reveal">
-                <span class="section-title__accent">//</span> <span data-i18n="projects.title">Projects</span>
+                <span class="section-title__accent">//</span> <span id="projects-title"
+                    data-i18n="projects.title">Projects</span>
             </h2>
             <p class="section-subtitle reveal" data-i18n="projects.subtitle">AI Vibe Coding으로 만든 프로젝트들</p>
             <div class="projects-grid">
@@ -329,10 +356,11 @@
     </section>
 
     <!-- ===== CONTACT / SNS ===== -->
-    <section class="section contact" id="contact">
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
         <div class="container">
             <h2 class="section-title reveal">
-                <span class="section-title__accent">//</span> <span data-i18n="contact.title">Contact</span>
+                <span class="section-title__accent">//</span> <span id="contact-title"
+                    data-i18n="contact.title">Contact</span>
             </h2>
             <p class="section-subtitle reveal" data-i18n="contact.subtitle">함께 작업하고 싶으시다면 언제든 연락 주세요!</p>
             <div class="contact-grid reveal delay-1">
@@ -391,6 +419,13 @@
             </div>
         </div>
     </section>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="맨 위로 이동">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 15l-6-6-6 6" />
+        </svg>
+    </button>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">

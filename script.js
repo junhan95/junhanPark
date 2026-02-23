@@ -207,21 +207,41 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((el) => revealObserver.observe(el));
 
 /* ========================================
-   NAVBAR SCROLL EFFECT
+   NAVBAR SCROLL EFFECT + SCROLL PROGRESS + BACK TO TOP
    ======================================== */
 const navbar = document.getElementById('navbar');
+const scrollProgress = document.getElementById('scrollProgress');
+const backToTop = document.getElementById('backToTop');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (currentScroll / docHeight) * 100 : 0;
 
+    // Navbar
     if (currentScroll > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
 
+    // Scroll progress bar
+    scrollProgress.style.width = scrollPercent + '%';
+
+    // Back to top button
+    if (currentScroll > 400) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+
     lastScroll = currentScroll;
+}, { passive: true });
+
+// Back to top click
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 /* ========================================
@@ -287,27 +307,22 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 /* ========================================
    PARTICLE ANIMATION — Confetti particles following mouse
    ======================================== */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const particleCanvas = document.getElementById('particleCanvas');
 const ctx = particleCanvas.getContext('2d');
-let particles = [];
 let pMouseX = 0, pMouseY = 0;
 let pIsMouseOnPage = false;
 
+// Object pool for particles
+const MAX_PARTICLES = 300;
+const particlePool = new Array(MAX_PARTICLES);
+let activeCount = 0;
+
 // Particle colors — site accent palette
 const particleColors = [
-    '#7c3aed', // purple
-    '#a855f7', // light purple
-    '#2563eb', // blue
-    '#60a5fa', // light blue
-    '#22d3ee', // cyan
-    '#e53e3e', // red
-    '#f56565', // light red
-    '#f6ad55', // orange
-    '#ecc94b', // yellow
-    '#48bb78', // green
+    '#7c3aed', '#a855f7', '#2563eb', '#60a5fa', '#22d3ee',
+    '#e53e3e', '#f56565', '#f6ad55', '#ecc94b', '#48bb78',
 ];
-
-// Particle shapes
 const SHAPES = ['circle', 'square', 'line'];
 
 function resizeCanvas() {
@@ -317,96 +332,100 @@ function resizeCanvas() {
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
-class Particle {
-    constructor(x, y) {
-        this.x = x + (Math.random() - 0.5) * 20;
-        this.y = y + (Math.random() - 0.5) * 20;
-        this.vx = (Math.random() - 0.5) * 3;
-        this.vy = (Math.random() - 0.5) * 3 - 1;
-        this.gravity = 0.02 + Math.random() * 0.03;
-        this.size = Math.random() * 4 + 2;
-        this.color = particleColors[Math.floor(Math.random() * particleColors.length)];
-        this.shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
-        this.rotation = Math.random() * Math.PI * 2;
-        this.rotationSpeed = (Math.random() - 0.5) * 0.1;
-        this.life = 1;
-        this.decay = 0.005 + Math.random() * 0.008;
+function initParticle(p, x, y) {
+    p.x = x + (Math.random() - 0.5) * 20;
+    p.y = y + (Math.random() - 0.5) * 20;
+    p.vx = (Math.random() - 0.5) * 3;
+    p.vy = (Math.random() - 0.5) * 3 - 1;
+    p.gravity = 0.02 + Math.random() * 0.03;
+    p.size = Math.random() * 4 + 2;
+    p.color = particleColors[Math.floor(Math.random() * particleColors.length)];
+    p.shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+    p.rotation = Math.random() * Math.PI * 2;
+    p.rotationSpeed = (Math.random() - 0.5) * 0.1;
+    p.life = 1;
+    p.decay = 0.005 + Math.random() * 0.008;
+    p.active = true;
+}
+
+function updateParticle(p) {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += p.gravity;
+    p.vx *= 0.99;
+    p.rotation += p.rotationSpeed;
+    p.life -= p.decay;
+    if (p.life <= 0) p.active = false;
+}
+
+function drawParticle(p, ctx) {
+    if (!p.active) return;
+    ctx.save();
+    ctx.globalAlpha = p.life;
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rotation);
+    ctx.fillStyle = p.color;
+
+    if (p.shape === 'circle') {
+        ctx.beginPath();
+        ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+        ctx.fill();
+    } else if (p.shape === 'square') {
+        ctx.fillRect(-p.size, -p.size * 0.4, p.size * 2, p.size * 0.8);
+    } else {
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = p.color;
+        ctx.beginPath();
+        ctx.moveTo(-p.size, 0);
+        ctx.lineTo(p.size, 0);
+        ctx.stroke();
     }
+    ctx.restore();
+}
 
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.vy += this.gravity;
-        this.vx *= 0.99;
-        this.rotation += this.rotationSpeed;
-        this.life -= this.decay;
-    }
+// Initialize pool
+for (let i = 0; i < MAX_PARTICLES; i++) {
+    particlePool[i] = { active: false };
+}
 
-    draw(ctx) {
-        if (this.life <= 0) return;
-        ctx.save();
-        ctx.globalAlpha = this.life;
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation);
-        ctx.fillStyle = this.color;
-
-        if (this.shape === 'circle') {
-            ctx.beginPath();
-            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        } else if (this.shape === 'square') {
-            ctx.fillRect(-this.size, -this.size * 0.4, this.size * 2, this.size * 0.8);
-        } else if (this.shape === 'line') {
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = this.color;
-            ctx.globalAlpha = this.life;
-            ctx.beginPath();
-            ctx.moveTo(-this.size, 0);
-            ctx.lineTo(this.size, 0);
-            ctx.stroke();
+function spawnParticle(x, y) {
+    for (let i = 0; i < MAX_PARTICLES; i++) {
+        if (!particlePool[i].active) {
+            initParticle(particlePool[i], x, y);
+            return;
         }
-
-        ctx.restore();
     }
 }
 
-// Emit particles on mouse move
-document.addEventListener('mousemove', (e) => {
-    pMouseX = e.clientX;
-    pMouseY = e.clientY;
-    if (!pIsMouseOnPage) pIsMouseOnPage = true;
+if (!prefersReducedMotion) {
+    document.addEventListener('mousemove', (e) => {
+        pMouseX = e.clientX;
+        pMouseY = e.clientY;
+        if (!pIsMouseOnPage) pIsMouseOnPage = true;
 
-    // Spawn 2-3 particles per move event
-    const count = Math.floor(Math.random() * 2) + 2;
-    for (let i = 0; i < count; i++) {
-        particles.push(new Particle(pMouseX, pMouseY));
-    }
-
-    // Cap particle count for performance
-    if (particles.length > 300) {
-        particles = particles.slice(-300);
-    }
-});
-
-document.addEventListener('mouseleave', () => {
-    pIsMouseOnPage = false;
-});
-
-// Animation loop
-function animateParticles() {
-    ctx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
-
-    for (let i = particles.length - 1; i >= 0; i--) {
-        particles[i].update();
-        particles[i].draw(ctx);
-
-        if (particles[i].life <= 0) {
-            particles.splice(i, 1);
+        const count = Math.floor(Math.random() * 2) + 2;
+        for (let i = 0; i < count; i++) {
+            spawnParticle(pMouseX, pMouseY);
         }
+    });
+
+    document.addEventListener('mouseleave', () => {
+        pIsMouseOnPage = false;
+    });
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+
+        for (let i = 0; i < MAX_PARTICLES; i++) {
+            if (particlePool[i].active) {
+                updateParticle(particlePool[i]);
+                drawParticle(particlePool[i], ctx);
+            }
+        }
+
+        requestAnimationFrame(animateParticles);
     }
 
-    requestAnimationFrame(animateParticles);
+    animateParticles();
 }
-
-animateParticles();
 
