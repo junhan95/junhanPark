@@ -2,7 +2,7 @@
 
 # ✨ Junhan Park — AI Vibe Coder
 
-[![GitHub Pages](https://img.shields.io/badge/🌐_Live_Site-junhan95.github.io/junhanPark-7c3aed?style=for-the-badge)](https://junhan95.github.io/junhanPark/)
+[![GitHub Pages](https://img.shields.io/badge/🌐_Live_Site-junhanpark.work-7c3aed?style=for-the-badge)](https://junhanpark.work/)
 [![GitHub](https://img.shields.io/badge/GitHub-junhan95-181717?style=for-the-badge&logo=github)](https://github.com/junhan95)
 
 <br>
