@@ -1270,6 +1270,101 @@ img {
 }
 
 /* ========================================
+   SKIP NAVIGATION (Accessibility)
+   ======================================== */
+.skip-nav {
+    position: fixed;
+    top: -100%;
+    left: 16px;
+    padding: 12px 24px;
+    background: var(--accent-gradient);
+    color: #fff;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    z-index: 10000;
+    transition: top 0.3s ease;
+    text-decoration: none;
+}
+
+.skip-nav:focus {
+    top: 16px;
+}
+
+/* ========================================
+   FOCUS VISIBLE (Keyboard Accessibility)
+   ======================================== */
+:focus-visible {
+    outline: 2px solid #a78bfa;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #a78bfa;
+    outline-offset: 3px;
+}
+
+/* ========================================
+   PROJECT FILTERS
+   ======================================== */
+.project-filters {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    background: var(--bg-glass);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: var(--radius-xl);
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.filter-btn:hover {
+    border-color: var(--accent-purple);
+    color: var(--text-primary);
+}
+
+.filter-btn.active {
+    background: var(--accent-gradient);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 2px 12px var(--accent-glow);
+}
+
+/* Project card filter transitions */
+.project-card {
+    transition: var(--transition-slow), opacity 0.4s ease, max-height 0.4s ease;
+}
+
+.project-card.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: none;
+    pointer-events: none;
+}
+
+/* ========================================
+   RESUME BUTTON
+   ======================================== */
+.btn--resume svg {
+    flex-shrink: 0;
+}
+
+/* ========================================
    PERFORMANCE — GPU hints
    ======================================== */
 #particleCanvas {

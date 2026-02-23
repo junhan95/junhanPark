@@ -34,7 +34,14 @@ const translations = {
         'contact.email_handle': '연락하기',
         'footer.text': '💜 와 AI Vibe Coding으로 제작',
         // Typing phrases
-        'typing': ['AI Vibe Coder', '풀스택 개발자', '끊임없이 배우는 개발자', 'Building with AI ✨', 'React & Node.js', 'Vibe Coding Enthusiast']
+        'typing': ['AI Vibe Coder', '풀스택 개발자', '끊임없이 배우는 개발자', 'Building with AI ✨', 'React & Node.js', 'Vibe Coding Enthusiast'],
+        // UI elements
+        'nav.skip': '본문 바로가기',
+        'hero.cta_resume': '이력서 다운로드',
+        'projects.filter_all': '전체',
+        'projects.filter_ai': 'AI',
+        'projects.filter_web': 'Web',
+        'projects.filter_fullstack': 'Full-Stack'
     },
     en: {
         'nav.about': 'About',
@@ -68,7 +75,14 @@ const translations = {
         'contact.email_handle': 'Contact me',
         'footer.text': 'Built with 💜 and AI Vibe Coding',
         // Typing phrases
-        'typing': ['AI Vibe Coder', 'Full-Stack Developer', 'Lifelong Learner', 'Building with AI ✨', 'React & Node.js', 'Vibe Coding Enthusiast']
+        'typing': ['AI Vibe Coder', 'Full-Stack Developer', 'Lifelong Learner', 'Building with AI ✨', 'React & Node.js', 'Vibe Coding Enthusiast'],
+        // UI elements
+        'nav.skip': 'Skip to content',
+        'hero.cta_resume': 'Download Resume',
+        'projects.filter_all': 'All',
+        'projects.filter_ai': 'AI',
+        'projects.filter_web': 'Web',
+        'projects.filter_fullstack': 'Full-Stack'
     }
 };
 
@@ -427,5 +441,41 @@ if (!prefersReducedMotion) {
     }
 
     animateParticles();
+}
+
+/* ========================================
+   PROJECT FILTERS
+   ======================================== */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        // Update active state
+        filterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach((card) => {
+            const tags = card.getAttribute('data-tags') || '';
+            if (filter === 'all' || tags.includes(filter)) {
+                card.classList.remove('hidden');
+                card.classList.add('visible');
+            } else {
+                card.classList.add('hidden');
+                card.classList.remove('visible');
+            }
+        });
+    });
+});
+
+/* ========================================
+   SERVICE WORKER REGISTRATION
+   ======================================== */
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => { });
+    });
 }
 
