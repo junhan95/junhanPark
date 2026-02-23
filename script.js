@@ -37,7 +37,6 @@ const translations = {
         'typing': ['AI Vibe Coder', '풀스택 개발자', '끊임없이 배우는 개발자', 'Building with AI ✨', 'React & Node.js', 'Vibe Coding Enthusiast'],
         // UI elements
         'nav.skip': '본문 바로가기',
-        'hero.cta_resume': '이력서 다운로드',
         'projects.filter_all': '전체',
         'projects.filter_ai': 'AI',
         'projects.filter_web': 'Web',
@@ -78,7 +77,6 @@ const translations = {
         'typing': ['AI Vibe Coder', 'Full-Stack Developer', 'Lifelong Learner', 'Building with AI ✨', 'React & Node.js', 'Vibe Coding Enthusiast'],
         // UI elements
         'nav.skip': 'Skip to content',
-        'hero.cta_resume': 'Download Resume',
         'projects.filter_all': 'All',
         'projects.filter_ai': 'AI',
         'projects.filter_web': 'Web',
