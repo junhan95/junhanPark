@@ -1,0 +1,106 @@
+.timelineSection {
+    background:
+        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(124, 58, 237, 0.06), transparent),
+        var(--bg-primary);
+}
+
+.timeline {
+    position: relative;
+    padding-left: 60px;
+    max-width: 800px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent-purple), var(--accent-blue), transparent);
+}
+
+.timelineItem {
+    position: relative;
+    margin-bottom: 48px;
+}
+
+.timelineItem:last-child {
+    margin-bottom: 0;
+}
+
+.timelineDot {
+    position: absolute;
+    left: -48px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    box-shadow: 0 0 20px var(--accent-glow);
+    border: 3px solid var(--bg-primary);
+}
+
+.timelineCard {
+    background: var(--bg-card);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    transition: var(--transition-base);
+    backdrop-filter: blur(8px);
+}
+
+.timelineCard:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(124, 58, 237, 0.2);
+    transform: translateX(8px);
+}
+
+.timelineDate {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    font-weight: 500;
+}
+
+.timelineRole {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 8px 0 12px;
+}
+
+.timelineDesc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Section-specific reveal */
+.timelineSection :global(.reveal) {
+    opacity: 0;
+    transform: translateX(-40px);
+}
+
+.timelineSection :global(.reveal.visible) {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 48px;
+    }
+
+    .timeline::before {
+        left: 16px;
+    }
+
+    .timelineDot {
+        left: -40px;
+    }
+
+    .timelineCard {
+        padding: 20px 24px;
+    }
+}

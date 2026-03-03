@@ -1,0 +1,178 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.heroBgGrid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+}
+
+:global([data-theme="light"]) .heroBgGrid {
+    background-image:
+        linear-gradient(rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
+}
+
+.heroGlow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+}
+
+.heroGlow1 {
+    width: 600px;
+    height: 600px;
+    background: var(--accent-glow);
+    top: -200px;
+    right: -100px;
+    opacity: 0.3;
+    animation: float 8s ease-in-out infinite;
+}
+
+.heroGlow2 {
+    width: 500px;
+    height: 500px;
+    background: var(--accent-glow-blue);
+    bottom: -100px;
+    left: -100px;
+    opacity: 0.25;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+.heroContent {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding: 0 24px;
+}
+
+.heroGreeting {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.heroName {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    background: var(--accent-gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+}
+
+.heroTypingWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    color: var(--accent-cyan);
+    margin-bottom: 28px;
+    min-height: 36px;
+}
+
+.heroTypingPrefix {
+    color: var(--text-muted);
+}
+
+.heroCursor {
+    animation: blink 1s step-end infinite;
+    font-weight: 100;
+    color: var(--accent-cyan);
+}
+
+.heroDesc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+.heroCta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.heroScrollIndicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.scrollMouse {
+    width: 24px;
+    height: 38px;
+    border: 2px solid var(--text-muted);
+    border-radius: 12px;
+    position: relative;
+}
+
+.scrollWheel {
+    width: 3px;
+    height: 8px;
+    background: var(--text-muted);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, var(--bg-primary), transparent);
+    pointer-events: none;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .heroName {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .heroCta {
+        flex-direction: column;
+        align-items: center;
+    }
+}

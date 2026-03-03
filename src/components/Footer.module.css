@@ -1,0 +1,26 @@
+.footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.footerContent {
+    text-align: center;
+}
+
+.footerLogo {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.footerText {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+.footerCopy {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}

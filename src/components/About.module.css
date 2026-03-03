@@ -1,0 +1,120 @@
+.aboutGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.aboutIntro {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.aboutText p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    font-size: 1.05rem;
+}
+
+.skillsTitle {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+}
+
+.skillsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skillTag {
+    padding: 8px 18px;
+    background: var(--bg-glass);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: var(--radius-xl);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: var(--transition-base);
+    cursor: default;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: skillFadeIn 0.4s ease forwards;
+}
+
+.skillTag:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.skillTag:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.skillTag:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.skillTag:nth-child(4) {
+    animation-delay: 0.25s;
+}
+
+.skillTag:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+.skillTag:nth-child(6) {
+    animation-delay: 0.35s;
+}
+
+.skillTag:nth-child(7) {
+    animation-delay: 0.4s;
+}
+
+.skillTag:nth-child(8) {
+    animation-delay: 0.45s;
+}
+
+.skillTag:nth-child(9) {
+    animation-delay: 0.5s;
+}
+
+.skillTag:nth-child(10) {
+    animation-delay: 0.55s;
+}
+
+.skillTag:nth-child(11) {
+    animation-delay: 0.6s;
+}
+
+.skillTag:nth-child(12) {
+    animation-delay: 0.65s;
+}
+
+.skillTag:hover {
+    border-color: var(--accent-purple);
+    color: var(--text-primary);
+    background: rgba(124, 58, 237, 0.08);
+    transform: translateY(-2px);
+}
+
+/* Section-specific reveal */
+.about :global(.reveal) {
+    opacity: 0;
+    transform: translateX(40px);
+}
+
+.about :global(.reveal.visible) {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .aboutGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
