@@ -43,9 +43,7 @@ function BlogCard({ post, lang, delay, readLabel }) {
 
     return (
         <a
-            href={post.url}
-            target={post.url !== '#' ? '_blank' : undefined}
-            rel="noopener noreferrer"
+            href={`/blog/${post.id}`}
             className={`${styles.card} reveal ${delay > 0 ? `delay-${delay}` : ''}`}
             ref={ref}
         >

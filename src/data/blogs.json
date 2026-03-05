@@ -8,7 +8,9 @@
         "date": "2025-03-01",
         "tag": "AI",
         "emoji": "🤖",
-        "url": "#"
+        "url": "#",
+        "contentKo": "## AI Vibe Coding이란?\n\nAI Vibe Coding은 ChatGPT, Claude, Gemini 같은 AI 코딩 어시스턴트를 적극 활용하여 개발 속도와 창의성을 극대화하는 개발 방법론입니다.\n\n## 핵심 원칙\n\n1. **목표 중심 사고**: 구현 방법보다 달성해야 할 결과에 집중합니다.\n2. **AI와의 협업**: AI를 단순 도구가 아닌 페어 프로그래머로 활용합니다.\n3. **빠른 반복**: 빠른 프로토타이핑과 피드백 루프를 통해 완성도를 높입니다.\n\n## 왜 Vibe Coding인가?\n\nVibe Coding은 개발자가 아이디어와 아키텍처에 집중하고, 반복적인 구현 작업은 AI에게 위임하는 방식입니다. 이를 통해 개인 개발자도 팀 수준의 생산성을 낼 수 있습니다.\n\n```javascript\n// AI에게 명확한 목표를 전달하는 것이 핵심\nconst goal = '사용자가 로그인하면 JWT 토큰을 발급하고 쿠키에 저장';\n// AI가 구현을 제안하고, 개발자는 검토하고 개선합니다.\n```\n\n## 마치며\n\nAI Vibe Coding은 미래의 개발 방식이 아니라, 지금 당장 적용 가능한 실용적인 방법론입니다.",
+        "contentEn": "## What is AI Vibe Coding?\n\nAI Vibe Coding is a development methodology that maximizes speed and creativity by actively leveraging AI coding assistants like ChatGPT, Claude, and Gemini.\n\n## Core Principles\n\n1. **Goal-oriented thinking**: Focus on the outcome, not just the implementation.\n2. **AI as a collaborator**: Treat AI as a pair programmer, not just a tool.\n3. **Rapid iteration**: Improve quality through fast prototyping and feedback loops.\n\n## Why Vibe Coding?\n\nVibe Coding lets developers focus on ideas and architecture while delegating repetitive implementation to AI — enabling individual developers to achieve team-level productivity.\n\n```javascript\n// Clear goal communication is key\nconst goal = 'Issue JWT on login and store in cookie';\n// AI suggests implementation; developer reviews and refines.\n```\n\n## Closing Thoughts\n\nAI Vibe Coding is not a future concept — it's a practical methodology you can apply right now."
     },
     {
         "id": "2",
@@ -19,7 +21,9 @@
         "date": "2025-02-15",
         "tag": "React",
         "emoji": "⚛️",
-        "url": "#"
+        "url": "#",
+        "contentKo": "## 왜 Next.js App Router인가?\n\nNext.js 13+의 App Router는 서버 컴포넌트와 클라이언트 컴포넌트를 명확히 분리하여 초기 로딩 성능을 크게 향상시킵니다.\n\n## 주요 기술 스택\n\n- **Next.js 16** - App Router 기반 프레임워크\n- **CSS Modules** - 스코프 격리된 스타일링\n- **Vercel** - 자동 CI/CD 배포\n\n## CSS Modules의 장점\n\nTailwind 없이 Vanilla CSS만으로도 강력한 UI를 만들 수 있습니다. CSS Modules는 클래스 이름 충돌을 방지하고 컴포넌트 단위 스타일 관리를 가능하게 합니다.\n\n```css\n.card {\n  background: var(--bg-card);\n  border-radius: var(--radius-lg);\n  transition: transform 0.3s ease;\n}\n\n.card:hover {\n  transform: translateY(-8px);\n}\n```\n\n## 성능 최적화\n\n- `next/image`로 이미지 자동 최적화\n- `useScrollReveal` 커스텀 훅으로 IntersectionObserver 활용\n- 폰트 최적화: Google Fonts를 Next.js font API로 로드",
+        "contentEn": "## Why Next.js App Router?\n\nNext.js 13+'s App Router clearly separates server and client components, significantly improving initial load performance.\n\n## Tech Stack\n\n- **Next.js 16** - App Router framework\n- **CSS Modules** - Scoped styling\n- **Vercel** - Automatic CI/CD deployment\n\n## Benefits of CSS Modules\n\nYou can build powerful UIs with plain Vanilla CSS without Tailwind. CSS Modules prevent class name collisions and enable component-level style management.\n\n```css\n.card {\n  background: var(--bg-card);\n  border-radius: var(--radius-lg);\n  transition: transform 0.3s ease;\n}\n\n.card:hover {\n  transform: translateY(-8px);\n}\n```\n\n## Performance Optimizations\n\n- Automatic image optimization with `next/image`\n- IntersectionObserver via custom `useScrollReveal` hook\n- Font optimization: Google Fonts loaded via Next.js font API"
     },
     {
         "id": "3",
@@ -30,6 +34,8 @@
         "date": "2025-01-28",
         "tag": "Vibe Coding",
         "emoji": "✨",
-        "url": "#"
+        "url": "#",
+        "contentKo": "## WiseQuery 개발 스토리\n\nWiseQuery는 AI 기반 지식 관리 플랫폼으로, 프로젝트별로 대화를 정리하고 RAG 기반 시맨틱 검색으로 답변을 제공합니다.\n\n## 혼자서 SaaS를 만든다는 것\n\n기획, 디자인, 개발, 배포까지 모든 과정을 혼자 진행했습니다. Vibe Coding 없이는 불가능했을 일입니다.\n\n## 핵심 기술\n\n- **RAG (Retrieval-Augmented Generation)**: 사용자의 문서를 벡터화하여 시맨틱 검색 구현\n- **Supabase**: 데이터베이스 + 인증 + 벡터 스토어\n- **OpenAI API**: GPT-4o 기반 답변 생성\n\n## 배운 점\n\n1. AI는 반복 작업을 대신해주지만, 아키텍처 결정은 여전히 개발자의 몫\n2. 빠른 MVP 출시가 완벽한 코드보다 중요할 때가 많다\n3. 사용자 피드백이 가장 좋은 스펙 문서",
+        "contentEn": "## The WiseQuery Story\n\nWiseQuery is an AI-powered knowledge management platform that organizes conversations by project and answers questions through RAG-based semantic search.\n\n## Building a SaaS Solo\n\nI handled everything alone — ideation, design, development, and deployment. It would have been impossible without Vibe Coding.\n\n## Core Technologies\n\n- **RAG (Retrieval-Augmented Generation)**: Vectorizes user documents for semantic search\n- **Supabase**: Database + Auth + Vector store\n- **OpenAI API**: GPT-4o-based answer generation\n\n## Lessons Learned\n\n1. AI handles repetitive tasks, but architecture decisions still belong to the developer\n2. Shipping a fast MVP is often more important than perfect code\n3. User feedback is the best spec document"
     }
 ]

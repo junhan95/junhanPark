@@ -168,6 +168,7 @@ function BlogManager() {
 function PostForm({ initial, onSave, onCancel }) {
     const [form, setForm] = useState(initial || {
         titleKo: '', titleEn: '', descKo: '', descEn: '',
+        contentKo: '', contentEn: '',
         date: new Date().toISOString().split('T')[0],
         tag: '', emoji: '📝', url: '#',
     });
@@ -182,6 +183,8 @@ function PostForm({ initial, onSave, onCancel }) {
                 <label>Title (English)<input value={form.titleEn} onChange={e => set('titleEn', e.target.value)} /></label>
                 <label className={styles.fullWidth}>설명 (한국어)<textarea rows={3} value={form.descKo} onChange={e => set('descKo', e.target.value)} /></label>
                 <label className={styles.fullWidth}>Description (English)<textarea rows={3} value={form.descEn} onChange={e => set('descEn', e.target.value)} /></label>
+                <label className={styles.fullWidth}>본문 (한국어) — Markdown 지원<textarea rows={10} value={form.contentKo} onChange={e => set('contentKo', e.target.value)} placeholder="## 제목&#10;&#10;내용을 작성하세요..." /></label>
+                <label className={styles.fullWidth}>Content (English) — Markdown supported<textarea rows={10} value={form.contentEn} onChange={e => set('contentEn', e.target.value)} placeholder="## Heading&#10;&#10;Write content here..." /></label>
                 <label>날짜<input type="date" value={form.date} onChange={e => set('date', e.target.value)} /></label>
                 <label>태그<input value={form.tag} onChange={e => set('tag', e.target.value)} placeholder="AI, React …" /></label>
                 <label>이모지<input value={form.emoji} onChange={e => set('emoji', e.target.value)} /></label>

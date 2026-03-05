@@ -12,6 +12,14 @@ function writeBlogs(data) {
     writeFileSync(dataPath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
+export async function GET(request, { params }) {
+    const { id } = await params;
+    const blogs = readBlogs();
+    const post = blogs.find((b) => b.id === id);
+    if (!post) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    return NextResponse.json(post);
+}
+
 export async function PUT(request, { params }) {
     const { id } = await params;
     const body = await request.json();
