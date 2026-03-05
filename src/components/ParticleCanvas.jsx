@@ -9,7 +9,7 @@ export default function ParticleCanvas() {
         if (!el) return;
 
         const onMouseMove = (e) => {
-            el.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(120, 80, 255, 0.12) 0%, transparent 70%)`;
+            el.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(255, 102, 102, 0.12) 0%, transparent 70%)`;
         };
 
         document.addEventListener('mousemove', onMouseMove);

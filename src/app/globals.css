@@ -3,24 +3,25 @@
    ======================================== */
 :root {
   /* Colors */
-  --bg-primary: #0a0e1a;
-  --bg-secondary: #111827;
-  --bg-card: rgba(17, 24, 39, 0.7);
-  --bg-card-hover: rgba(30, 41, 59, 0.8);
+  /* Dark Mode Palette */
+  --bg-primary: #000000;
+  --bg-secondary: #333333;
+  --bg-card: rgba(51, 51, 51, 0.85);
+  --bg-card-hover: rgba(68, 68, 68, 0.9);
   --bg-glass: rgba(255, 255, 255, 0.03);
-  --bg-glass-border: rgba(255, 255, 255, 0.08);
+  --bg-glass-border: rgba(255, 255, 255, 0.15);
 
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #999999;
 
-  --accent-purple: #7c3aed;
-  --accent-blue: #2563eb;
-  --accent-cyan: #22d3ee;
-  --accent-gradient: linear-gradient(135deg, #7c3aed, #2563eb);
-  --accent-gradient-text: linear-gradient(135deg, #a78bfa, #60a5fa);
-  --accent-glow: rgba(124, 58, 237, 0.4);
-  --accent-glow-blue: rgba(37, 99, 235, 0.3);
+  --accent-purple: #ff6666;
+  --accent-blue: #3399ff;
+  --accent-cyan: #ffff33;
+  --accent-gradient: linear-gradient(135deg, #ff6666, #3399ff);
+  --accent-gradient-text: linear-gradient(135deg, #ff6666, #3399ff);
+  --accent-glow: rgba(255, 102, 102, 0.4);
+  --accent-glow-blue: rgba(51, 153, 255, 0.3);
 
   --border-subtle: rgba(148, 163, 184, 0.1);
 
@@ -50,31 +51,32 @@
    LIGHT THEME
    ======================================== */
 [data-theme="light"] {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #e2e8f0;
+  /* Light Mode Palette */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f0f0f0;
   --bg-card: rgba(255, 255, 255, 0.85);
-  --bg-card-hover: rgba(241, 245, 249, 0.95);
+  --bg-card-hover: rgba(240, 240, 240, 0.95);
   --bg-glass: rgba(0, 0, 0, 0.03);
-  --bg-glass-border: rgba(0, 0, 0, 0.08);
+  --bg-glass-border: rgba(0, 0, 0, 0.12);
 
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-muted: #666666;
 
-  --accent-purple: #7c3aed;
-  --accent-blue: #2563eb;
-  --accent-cyan: #0891b2;
-  --accent-gradient: linear-gradient(135deg, #7c3aed, #2563eb);
-  --accent-gradient-text: linear-gradient(135deg, #6d28d9, #1d4ed8);
-  --accent-glow: rgba(124, 58, 237, 0.15);
-  --accent-glow-blue: rgba(37, 99, 235, 0.1);
+  --accent-purple: #ff3333;
+  --accent-blue: #0066ff;
+  --accent-cyan: #ffff00;
+  --accent-gradient: linear-gradient(135deg, #ff3333, #0066ff);
+  --accent-gradient-text: linear-gradient(135deg, #ff3333, #0066ff);
+  --accent-glow: rgba(255, 51, 51, 0.15);
+  --accent-glow-blue: rgba(0, 102, 255, 0.1);
 
-  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.12);
 }
 
 [data-theme="light"] .tag {
-  background: rgba(124, 58, 237, 0.08);
-  color: #6d28d9;
+  background: rgba(255, 51, 51, 0.08);
+  color: #ff3333;
 }
 
 /* ========================================
@@ -215,12 +217,12 @@ img {
    ======================================== */
 .tag {
   padding: 4px 12px;
-  background: rgba(124, 58, 237, 0.12);
-  border: 1px solid rgba(124, 58, 237, 0.2);
+  background: rgba(255, 102, 102, 0.12);
+  border: 1px solid rgba(255, 102, 102, 0.25);
   border-radius: var(--radius-xl);
   font-size: 0.78rem;
   font-weight: 500;
-  color: #a78bfa;
+  color: #ff6666;
 }
 
 /* ========================================
@@ -367,14 +369,14 @@ img {
    FOCUS VISIBLE
    ======================================== */
 :focus-visible {
-  outline: 2px solid #a78bfa;
+  outline: 2px solid #ff6666;
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #a78bfa;
+  outline: 2px solid #ff6666;
   outline-offset: 3px;
 }
 
