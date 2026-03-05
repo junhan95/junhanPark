@@ -224,6 +224,23 @@
     opacity: 0.85;
 }
 
+.backBtn {
+    background: none;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 9px 20px;
+    color: #aaa;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.backBtn:hover {
+    border-color: #ff6666;
+    color: #ff9999;
+}
+
 .toast {
     background: #1e3a1e;
     color: #6fda6f;

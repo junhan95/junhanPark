@@ -121,7 +121,10 @@ function BlogManager() {
         <div className={styles.panel}>
             <div className={styles.panelHeader}>
                 <h2 className={styles.panelTitle}>블로그 관리</h2>
-                <button className={styles.addBtn} onClick={() => setEditing('new')}>+ 새 포스트</button>
+                {editing
+                    ? <button className={styles.backBtn} onClick={() => setEditing(null)}>← 뒤로가기</button>
+                    : <button className={styles.addBtn} onClick={() => setEditing('new')}>+ 새 포스트</button>
+                }
             </div>
             {toast && <div className={styles.toast}>{toast}</div>}
 
@@ -143,23 +146,25 @@ function BlogManager() {
                 />
             )}
 
-            <div className={styles.postList}>
-                {posts.map(post => (
-                    <div key={post.id} className={styles.postItem}>
-                        <div className={styles.postMeta}>
-                            <span className={styles.postEmoji}>{post.emoji}</span>
-                            <div>
-                                <div className={styles.postTitle}>{post.titleKo}</div>
-                                <div className={styles.postDate}>{post.date} · {post.tag}</div>
+            {!editing && (
+                <div className={styles.postList}>
+                    {posts.map(post => (
+                        <div key={post.id} className={styles.postItem}>
+                            <div className={styles.postMeta}>
+                                <span className={styles.postEmoji}>{post.emoji}</span>
+                                <div>
+                                    <div className={styles.postTitle}>{post.titleKo}</div>
+                                    <div className={styles.postDate}>{post.date} · {post.tag}</div>
+                                </div>
+                            </div>
+                            <div className={styles.postActions}>
+                                <button className={styles.editBtn} onClick={() => setEditing(post)}>편집</button>
+                                <button className={styles.deleteBtn} onClick={() => handleDelete(post.id)}>삭제</button>
                             </div>
                         </div>
-                        <div className={styles.postActions}>
-                            <button className={styles.editBtn} onClick={() => setEditing(post)}>편집</button>
-                            <button className={styles.deleteBtn} onClick={() => handleDelete(post.id)}>삭제</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
