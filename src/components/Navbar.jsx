@@ -34,6 +34,7 @@ export default function Navbar() {
                     <li><a href="#about" className={styles.navLink} onClick={(e) => handleNavClick(e, '#about')}>{t('nav.about')}</a></li>
                     <li><a href="#timeline" className={styles.navLink} onClick={(e) => handleNavClick(e, '#timeline')}>{t('nav.career')}</a></li>
                     <li><a href="#projects" className={styles.navLink} onClick={(e) => handleNavClick(e, '#projects')}>{t('nav.projects')}</a></li>
+                    <li><a href="#blog" className={styles.navLink} onClick={(e) => handleNavClick(e, '#blog')}>{t('nav.blog')}</a></li>
                     <li><a href="#contact" className={styles.navLink} onClick={(e) => handleNavClick(e, '#contact')}>{t('nav.contact')}</a></li>
                 </ul>
 

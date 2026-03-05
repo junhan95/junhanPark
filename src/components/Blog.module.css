@@ -1,0 +1,110 @@
+.blog {
+    background:
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(255, 102, 102, 0.05), transparent),
+        var(--bg-primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-base);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-purple);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25), 0 0 32px var(--accent-glow);
+}
+
+.cardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.emoji {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.tag {
+    padding: 4px 12px;
+    background: rgba(255, 102, 102, 0.12);
+    border: 1px solid rgba(255, 102, 102, 0.25);
+    border-radius: var(--radius-xl);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-purple);
+}
+
+:global([data-theme="light"]) .tag {
+    background: rgba(255, 51, 51, 0.08);
+    color: var(--accent-purple);
+}
+
+.cardTitle {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+}
+
+.cardDesc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    flex: 1;
+}
+
+.cardFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--bg-glass-border);
+}
+
+.date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.readMore {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-purple);
+    transition: var(--transition-fast);
+}
+
+.card:hover .readMore {
+    letter-spacing: 0.03em;
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
