@@ -1,0 +1,14 @@
+{
+    "hero": {
+        "greetingKo": "안녕하세요 👋 저는",
+        "greetingEn": "Hello 👋 I am",
+        "descKo": "AI와 함께 코드를 작성하고, 아이디어를 현실로 만드는 것을 즐깁니다.\nVibe Coding으로 더 빠르고, 더 창의적인 개발을 추구합니다.",
+        "descEn": "I enjoy writing code with AI and turning ideas into reality.\nPursuing faster and more creative development with Vibe Coding."
+    },
+    "about": {
+        "introKo": "AI Vibe Coder로서, 저는 인공지능 도구를 활용한 효율적이고 창의적인 개발 방식을 추구합니다.",
+        "introEn": "As an AI Vibe Coder, I pursue efficient and creative development using artificial intelligence tools.",
+        "descKo": "복잡한 기술적 문제를 해결하는 것을 좋아하며, 사용자 경험을 최우선으로 생각합니다. AI 코딩 어시스턴트와 함께 빠른 프로토타이핑부터 프로덕션 레벨의 애플리케이션까지 다양한 프로젝트를 진행하고 있습니다.",
+        "descEn": "I love solving complex technical problems and prioritize user experience above all. Working with AI coding assistants, I build everything from rapid prototypes to production-level applications."
+    }
+}

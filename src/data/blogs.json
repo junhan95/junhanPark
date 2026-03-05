@@ -1,0 +1,35 @@
+[
+    {
+        "id": "1",
+        "titleKo": "AI Vibe Coding이란 무엇인가?",
+        "titleEn": "What is AI Vibe Coding?",
+        "descKo": "AI 코딩 어시스턴트를 활용해 더 빠르고 창의적으로 개발하는 Vibe Coding 방법론을 소개합니다.",
+        "descEn": "An introduction to Vibe Coding — a methodology for faster and more creative development using AI coding assistants.",
+        "date": "2025-03-01",
+        "tag": "AI",
+        "emoji": "🤖",
+        "url": "#"
+    },
+    {
+        "id": "2",
+        "titleKo": "React와 Next.js로 포트폴리오 만들기",
+        "titleEn": "Building a Portfolio with React & Next.js",
+        "descKo": "Next.js App Router와 CSS 모듈을 활용해 퍼포먼스 최적화된 포트폴리오 사이트를 구축한 과정을 공유합니다.",
+        "descEn": "How I built a performance-optimized portfolio using Next.js App Router and CSS Modules.",
+        "date": "2025-02-15",
+        "tag": "React",
+        "emoji": "⚛️",
+        "url": "#"
+    },
+    {
+        "id": "3",
+        "titleKo": "Vibe Coding으로 SaaS 런칭하기",
+        "titleEn": "Launching a SaaS with Vibe Coding",
+        "descKo": "AI 도구만으로 WiseQuery를 기획부터 배포까지 독립적으로 완성한 실제 경험을 담았습니다.",
+        "descEn": "My real experience independently completing WiseQuery — from concept to deployment — using only AI tools.",
+        "date": "2025-01-28",
+        "tag": "Vibe Coding",
+        "emoji": "✨",
+        "url": "#"
+    }
+]

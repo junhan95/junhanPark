@@ -1,39 +1,21 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import styles from './Blog.module.css';
 
-const blogPosts = [
-    {
-        titleKey: 'blog.post1_title',
-        descKey: 'blog.post1_desc',
-        date: '2025-03-01',
-        tag: 'AI',
-        url: '#',
-        emoji: '🤖',
-    },
-    {
-        titleKey: 'blog.post2_title',
-        descKey: 'blog.post2_desc',
-        date: '2025-02-15',
-        tag: 'React',
-        url: '#',
-        emoji: '⚛️',
-    },
-    {
-        titleKey: 'blog.post3_title',
-        descKey: 'blog.post3_desc',
-        date: '2025-01-28',
-        tag: 'Vibe Coding',
-        url: '#',
-        emoji: '✨',
-    },
-];
-
 export default function Blog() {
-    const { t } = useLanguage();
+    const { t, lang } = useLanguage();
+    const [posts, setPosts] = useState([]);
     const titleRef = useScrollReveal();
     const subtitleRef = useScrollReveal();
+
+    useEffect(() => {
+        fetch('/api/blogs')
+            .then(r => r.json())
+            .then(setPosts)
+            .catch(() => setPosts([]));
+    }, []);
 
     return (
         <section className={`section ${styles.blog}`} id="blog" aria-labelledby="blog-title">
@@ -45,8 +27,8 @@ export default function Blog() {
                 <p className="section-subtitle reveal" ref={subtitleRef}>{t('blog.subtitle')}</p>
 
                 <div className={styles.grid}>
-                    {blogPosts.map((post, i) => (
-                        <BlogCard key={post.titleKey} post={post} delay={i} t={t} />
+                    {posts.map((post, i) => (
+                        <BlogCard key={post.id} post={post} lang={lang} delay={i} readLabel={t('blog.read_more')} />
                     ))}
                 </div>
             </div>
@@ -54,8 +36,10 @@ export default function Blog() {
     );
 }
 
-function BlogCard({ post, delay, t }) {
+function BlogCard({ post, lang, delay, readLabel }) {
     const ref = useScrollReveal();
+    const title = lang === 'ko' ? post.titleKo : post.titleEn;
+    const desc = lang === 'ko' ? post.descKo : post.descEn;
 
     return (
         <a
@@ -69,11 +53,11 @@ function BlogCard({ post, delay, t }) {
                 <span className={styles.emoji}>{post.emoji}</span>
                 <span className={styles.tag}>{post.tag}</span>
             </div>
-            <h3 className={styles.cardTitle}>{t(post.titleKey)}</h3>
-            <p className={styles.cardDesc}>{t(post.descKey)}</p>
+            <h3 className={styles.cardTitle}>{title}</h3>
+            <p className={styles.cardDesc}>{desc}</p>
             <div className={styles.cardFooter}>
                 <time className={styles.date}>{post.date}</time>
-                <span className={styles.readMore}>{t('blog.read_more')} →</span>
+                <span className={styles.readMore}>{readLabel} →</span>
             </div>
         </a>
     );
