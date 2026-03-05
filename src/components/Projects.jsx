@@ -75,24 +75,21 @@ export default function Projects() {
                 </div>
 
                 <div className={styles.projectsGrid}>
-                    {projectsData.map((project, i) => {
-                        const visible = activeFilter === 'all' || project.category.includes(activeFilter);
-                        return (
-                            <ProjectCard key={project.title} project={project} delay={i} visible={visible} t={t} />
-                        );
-                    })}
+                    {filteredProjects.map((project, i) => (
+                        <ProjectCard key={project.title} project={project} delay={i} t={t} />
+                    ))}
                 </div>
             </div>
         </section>
     );
 }
 
-function ProjectCard({ project, delay, visible, t }) {
+function ProjectCard({ project, delay, t }) {
     const ref = useScrollReveal();
 
     return (
         <article
-            className={`${styles.projectCard} reveal ${delay > 0 ? `delay-${delay}` : ''} ${!visible ? styles.hidden : ''}`}
+            className={`${styles.projectCard} reveal ${delay > 0 ? `delay-${delay}` : ''}`}
             ref={ref}
         >
             <div className={styles.imageWrapper}>
