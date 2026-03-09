@@ -57,13 +57,45 @@
     position: relative;
     z-index: 2;
     padding: 0 24px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.heroGreeting {
-    font-size: 1.15rem;
-    color: var(--text-secondary);
-    margin-bottom: 12px;
-    font-weight: 400;
+/* Status Tag */
+.heroTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(124, 58, 237, 0.08);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent-purple);
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+}
+
+.heroTagDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
 }
 
 .heroName {
@@ -105,8 +137,41 @@
     font-size: 1.1rem;
     color: var(--text-secondary);
     max-width: 600px;
-    margin: 0 auto 40px;
+    margin: 0 auto 32px;
     line-height: 1.8;
+}
+
+/* Highlights */
+.heroHighlights {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.heroHighlight {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: var(--bg-glass);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: var(--radius-xl);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: var(--transition-base);
+}
+
+.heroHighlight:hover {
+    border-color: var(--accent-purple);
+    color: var(--text-primary);
+    background: rgba(124, 58, 237, 0.08);
+    transform: translateY(-2px);
+}
+
+.heroHighlightIcon {
+    font-size: 1.1rem;
 }
 
 .heroCta {
@@ -116,6 +181,7 @@
     flex-wrap: wrap;
 }
 
+/* Scroll */
 .heroScrollIndicator {
     position: absolute;
     bottom: 40px;
@@ -167,6 +233,10 @@
 @media (max-width: 768px) {
     .heroName {
         font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .heroHighlights {
+        gap: 10px;
     }
 }
 

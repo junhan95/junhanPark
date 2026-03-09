@@ -55,8 +55,6 @@ export default function Hero() {
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const descLines = t('hero.desc').split('\n');
-
     return (
         <section className={styles.hero} id="hero">
             <div className={styles.heroBgGrid}></div>
@@ -64,8 +62,14 @@ export default function Hero() {
             <div className={`${styles.heroGlow} ${styles.heroGlow2}`}></div>
 
             <div className={styles.heroContent}>
-                <p className={`${styles.heroGreeting} animate-fade-up`}>{t('hero.greeting')}</p>
-                <h1 className={`${styles.heroName} animate-fade-up delay-1`}>Junhan Park</h1>
+                <div className={`${styles.heroTag} animate-fade-up`}>
+                    <span className={styles.heroTagDot}></span>
+                    {t('hero.tag')}
+                </div>
+
+                <h1 className={`${styles.heroName} animate-fade-up delay-1`}>
+                    Junhan Park
+                </h1>
 
                 <div className={`${styles.heroTypingWrapper} animate-fade-up delay-2`}>
                     <span className={styles.heroTypingPrefix}>&gt;&nbsp;</span>
@@ -74,14 +78,21 @@ export default function Hero() {
                 </div>
 
                 <p className={`${styles.heroDesc} animate-fade-up delay-3`}>
-                    {descLines.map((line, i) => (
-                        <span key={i}>{line}{i < descLines.length - 1 && <br />}</span>
-                    ))}
+                    {t('hero.desc')}
                 </p>
 
+                <div className={`${styles.heroHighlights} animate-fade-up delay-3`}>
+                    {t('hero.highlights').map((item, i) => (
+                        <div key={i} className={styles.heroHighlight}>
+                            <span className={styles.heroHighlightIcon}>{item.icon}</span>
+                            <span>{item.text}</span>
+                        </div>
+                    ))}
+                </div>
+
                 <div className={`${styles.heroCta} animate-fade-up delay-4`}>
-                    <a href="#projects" className="btn btn--primary" onClick={(e) => handleClick(e, '#projects')}>
-                        <span>{t('hero.cta_projects')}</span>
+                    <a href="#about" className="btn btn--primary" onClick={(e) => handleClick(e, '#about')}>
+                        <span>{t('hero.cta_about')}</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>

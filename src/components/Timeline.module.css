@@ -76,6 +76,12 @@
     line-height: 1.7;
 }
 
+.timelineRoleTitle {
+    font-size: 0.9rem;
+    color: var(--accent-purple);
+    margin-bottom: 8px;
+}
+
 /* Section-specific reveal */
 .timelineSection :global(.reveal) {
     opacity: 0;
@@ -85,6 +91,39 @@
 .timelineSection :global(.reveal.visible) {
     opacity: 1;
     transform: translateX(0);
+}
+
+/* More Button */
+.moreBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    margin-left: 60px;
+    padding: 10px 24px;
+    background: var(--bg-glass);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: var(--radius-xl);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.moreBtn:hover {
+    border-color: var(--accent-purple);
+    color: var(--text-primary);
+    background: rgba(124, 58, 237, 0.08);
+}
+
+.moreBtnIcon {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.moreBtnIconOpen {
+    transform: rotate(180deg);
 }
 
 @media (max-width: 768px) {

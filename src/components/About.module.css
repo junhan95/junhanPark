@@ -1,104 +1,221 @@
-.aboutGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.aboutContent {
+    display: flex;
+    align-items: center;
     gap: 60px;
-    align-items: start;
 }
 
-.aboutIntro {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    margin-bottom: 20px;
+.aboutDesc {
+    flex: 1;
 }
 
-.aboutText p {
+.aboutDesc p {
     color: var(--text-secondary);
     margin-bottom: 16px;
     font-size: 1.05rem;
 }
 
-.skillsTitle {
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--text-primary);
+.aboutIntro {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: 24px;
 }
 
-.skillsGrid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.profileImage {
+    flex-shrink: 0;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--bg-glass-border);
 }
 
-.skillTag {
-    padding: 8px 18px;
+.profileImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* More Button */
+.moreBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
     background: var(--bg-glass);
     border: 1px solid var(--bg-glass-border);
     border-radius: var(--radius-xl);
-    font-size: 0.9rem;
-    font-weight: 500;
     color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
     transition: var(--transition-base);
-    cursor: default;
-    opacity: 0;
-    transform: translateY(12px);
-    animation: skillFadeIn 0.4s ease forwards;
 }
 
-.skillTag:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.skillTag:nth-child(2) {
-    animation-delay: 0.15s;
-}
-
-.skillTag:nth-child(3) {
-    animation-delay: 0.2s;
-}
-
-.skillTag:nth-child(4) {
-    animation-delay: 0.25s;
-}
-
-.skillTag:nth-child(5) {
-    animation-delay: 0.3s;
-}
-
-.skillTag:nth-child(6) {
-    animation-delay: 0.35s;
-}
-
-.skillTag:nth-child(7) {
-    animation-delay: 0.4s;
-}
-
-.skillTag:nth-child(8) {
-    animation-delay: 0.45s;
-}
-
-.skillTag:nth-child(9) {
-    animation-delay: 0.5s;
-}
-
-.skillTag:nth-child(10) {
-    animation-delay: 0.55s;
-}
-
-.skillTag:nth-child(11) {
-    animation-delay: 0.6s;
-}
-
-.skillTag:nth-child(12) {
-    animation-delay: 0.65s;
-}
-
-.skillTag:hover {
+.moreBtn:hover {
     border-color: var(--accent-purple);
     color: var(--text-primary);
     background: rgba(124, 58, 237, 0.08);
-    transform: translateY(-2px);
+}
+
+.moreBtnIcon {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.moreBtnIconOpen {
+    transform: rotate(180deg);
+}
+
+/* More Content */
+.moreContent {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    animation: fadeSlideIn 0.4s ease;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.moreSection {
+    padding: 28px;
+    background: var(--bg-glass);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: var(--radius-lg, 16px);
+}
+
+.moreSectionTitle {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--bg-glass-border);
+}
+
+/* Expertise */
+.expertiseGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.expertiseTag {
+    padding: 6px 14px;
+    background: rgba(124, 58, 237, 0.06);
+    border: 1px solid var(--bg-glass-border);
+    border-radius: var(--radius-xl);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    transition: var(--transition-base);
+}
+
+.expertiseTag:hover {
+    border-color: var(--accent-purple);
+    color: var(--text-primary);
+}
+
+/* Career */
+.careerList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.careerItem {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--bg-glass-border);
+}
+
+.careerItem:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.careerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+}
+
+.careerPeriod {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.careerRole {
+    font-size: 0.9rem;
+    color: var(--accent-purple);
+    margin-bottom: 4px;
+}
+
+.careerDesc {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Education */
+.eduItem {
+    margin-bottom: 16px;
+}
+
+.eduItem:last-child {
+    margin-bottom: 0;
+}
+
+.eduItem strong {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.eduItem p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.thesis {
+    font-style: italic;
+    opacity: 0.8;
+    font-size: 0.85rem !important;
+}
+
+/* Interests */
+.interestList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.interestList li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.interestList li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
 }
 
 /* Section-specific reveal */
@@ -113,8 +230,23 @@
 }
 
 @media (max-width: 768px) {
-    .aboutGrid {
+    .aboutContent {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+
+    .profileImage {
+        width: 200px;
+        height: 200px;
+    }
+
+    .moreContent {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 24px;
+    }
+
+    .careerHeader {
+        flex-direction: column;
+        gap: 2px;
     }
 }
