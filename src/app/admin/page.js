@@ -16,7 +16,7 @@ export default function AdminPage() {
 
     if (checking) return null;
     return authed
-        ? <Dashboard onLogout={() => { localStorage.removeItem(TOKEN_KEY); setAuthed(false); }} />
+        ? <Dashboard onLogout={() => { localStorage.removeItem(TOKEN_KEY); window.location.href = '/'; }} />
         : <LoginForm onSuccess={() => setAuthed(true)} />;
 }
 
