@@ -1,20 +1,19 @@
 import { NextResponse } from 'next/server';
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { getJSON, setJSON } from '@/lib/kv';
+import initialBlogs from '@/data/blogs.json';
 
-const dataPath = join(process.cwd(), 'src', 'data', 'blogs.json');
+const KEY = 'blogs';
 
-function readBlogs() {
-    return JSON.parse(readFileSync(dataPath, 'utf-8'));
-}
-
-function writeBlogs(data) {
-    writeFileSync(dataPath, JSON.stringify(data, null, 2), 'utf-8');
+async function readBlogs() {
+    const data = await getJSON(KEY);
+    if (data) return data;
+    await setJSON(KEY, initialBlogs);
+    return initialBlogs;
 }
 
 export async function GET(request, { params }) {
     const { id } = await params;
-    const blogs = readBlogs();
+    const blogs = await readBlogs();
     const post = blogs.find((b) => b.id === id);
     if (!post) return NextResponse.json({ error: 'Not found' }, { status: 404 });
     return NextResponse.json(post);
@@ -23,19 +22,19 @@ export async function GET(request, { params }) {
 export async function PUT(request, { params }) {
     const { id } = await params;
     const body = await request.json();
-    const blogs = readBlogs();
+    const blogs = await readBlogs();
     const idx = blogs.findIndex((b) => b.id === id);
     if (idx === -1) return NextResponse.json({ error: 'Not found' }, { status: 404 });
     blogs[idx] = { ...blogs[idx], ...body };
-    writeBlogs(blogs);
+    await setJSON(KEY, blogs);
     return NextResponse.json(blogs[idx]);
 }
 
 export async function DELETE(request, { params }) {
     const { id } = await params;
-    const blogs = readBlogs();
+    const blogs = await readBlogs();
     const filtered = blogs.filter((b) => b.id !== id);
     if (filtered.length === blogs.length) return NextResponse.json({ error: 'Not found' }, { status: 404 });
-    writeBlogs(filtered);
+    await setJSON(KEY, filtered);
     return NextResponse.json({ success: true });
 }

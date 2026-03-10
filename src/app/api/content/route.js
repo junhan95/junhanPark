@@ -1,16 +1,22 @@
 import { NextResponse } from 'next/server';
-import { readFileSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import { getJSON, setJSON } from '@/lib/kv';
+import initialContent from '@/data/content.json';
 
-const dataPath = join(process.cwd(), 'src', 'data', 'content.json');
+const KEY = 'content';
+
+async function readContent() {
+    const data = await getJSON(KEY);
+    if (data) return data;
+    await setJSON(KEY, initialContent);
+    return initialContent;
+}
 
 export async function GET() {
-    const data = JSON.parse(readFileSync(dataPath, 'utf-8'));
-    return NextResponse.json(data);
+    return NextResponse.json(await readContent());
 }
 
 export async function PUT(request) {
     const body = await request.json();
-    writeFileSync(dataPath, JSON.stringify(body, null, 2), 'utf-8');
+    await setJSON(KEY, body);
     return NextResponse.json(body);
 }
