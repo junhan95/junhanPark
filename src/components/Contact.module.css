@@ -22,6 +22,9 @@
     text-align: center;
     transition: var(--transition-base);
     cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
 }
 
 .snsCard:hover {

@@ -82,6 +82,9 @@ function Dashboard({ onLogout }) {
                     <button className={tab === 'blog' ? styles.navItemActive : styles.navItem} onClick={() => setTab('blog')}>
                         📝 블로그 관리
                     </button>
+                    <button className={tab === 'guestbook' ? styles.navItemActive : styles.navItem} onClick={() => setTab('guestbook')}>
+                        ✍️ 방명록 관리
+                    </button>
                     <button className={tab === 'content' ? styles.navItemActive : styles.navItem} onClick={() => setTab('content')}>
                         ✏️ 콘텐츠 편집
                     </button>
@@ -89,7 +92,9 @@ function Dashboard({ onLogout }) {
                 <button className={styles.logoutBtn} onClick={onLogout}>로그아웃</button>
             </aside>
             <main className={styles.mainArea}>
-                {tab === 'blog' ? <BlogManager /> : <ContentEditor />}
+                {tab === 'blog' && <BlogManager />}
+                {tab === 'guestbook' && <GuestbookManager />}
+                {tab === 'content' && <ContentEditor />}
             </main>
         </div>
     );
@@ -248,6 +253,57 @@ function ContentEditor() {
                     <label className={styles.fullWidth}>상세 설명 (한국어)<textarea rows={4} value={content.about.descKo} onChange={e => set('about', 'descKo', e.target.value)} /></label>
                     <label className={styles.fullWidth}>Description (English)<textarea rows={4} value={content.about.descEn} onChange={e => set('about', 'descEn', e.target.value)} /></label>
                 </div>
+            </div>
+        </div>
+    );
+}
+
+/* ── Guestbook Manager ── */
+function GuestbookManager() {
+    const [entries, setEntries] = useState([]);
+    const [toast, setToast] = useState('');
+
+    const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(''), 2500); };
+
+    const load = useCallback(async () => {
+        const res = await fetch('/api/guestbook');
+        setEntries(await res.json());
+    }, []);
+
+    useEffect(() => { load(); }, [load]);
+
+    const handleDelete = async (id) => {
+        await fetch(`/api/guestbook/${id}`, { method: 'DELETE' });
+        showToast('삭제되었습니다.');
+        load();
+    };
+
+    return (
+        <div className={styles.panel}>
+            <div className={styles.panelHeader}>
+                <h2 className={styles.panelTitle}>방명록 관리</h2>
+            </div>
+            {toast && <div className={styles.toast}>{toast}</div>}
+
+            <div className={styles.postList}>
+                {entries.length === 0 && (
+                    <p style={{ color: '#666', textAlign: 'center', padding: '40px 0' }}>등록된 방명록이 없습니다.</p>
+                )}
+                {entries.map(entry => (
+                    <div key={entry.id} className={styles.postItem}>
+                        <div className={styles.postMeta}>
+                            <span className={styles.postEmoji}>✍️</span>
+                            <div>
+                                <div className={styles.postTitle}>{entry.title}</div>
+                                <div className={styles.postDate}>{new Date(entry.createdAt).toLocaleDateString('ko-KR')}</div>
+                                <div style={{ color: '#999', fontSize: '0.85rem', marginTop: '4px', whiteSpace: 'pre-wrap' }}>{entry.content}</div>
+                            </div>
+                        </div>
+                        <div className={styles.postActions}>
+                            <button className={styles.deleteBtn} onClick={() => handleDelete(entry.id)}>삭제</button>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );

@@ -1,13 +1,16 @@
 'use client';
+import { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import GuestbookModal from './GuestbookModal';
 import styles from './Contact.module.css';
 
 export default function Contact() {
-    const { t } = useLanguage();
+    const { t, lang } = useLanguage();
     const titleRef = useScrollReveal();
     const subtitleRef = useScrollReveal();
     const gridRef = useScrollReveal(0.1, 0);
+    const [showGuestbook, setShowGuestbook] = useState(false);
 
     return (
         <section className={`section ${styles.contact}`} id="contact" aria-labelledby="contact-title">
@@ -52,18 +55,20 @@ export default function Contact() {
                         <span className={styles.snsHandle}>{t('contact.email_handle')}</span>
                     </a>
 
-                    {/* Coffee */}
-                    <a href="https://ctee.kr/place/pokemon" target="_blank" rel="noopener noreferrer" className={styles.snsCard} aria-label="Buy me a coffee">
+                    {/* 방명록 */}
+                    <button className={styles.snsCard} aria-label="방명록" onClick={() => setShowGuestbook(true)}>
                         <div className={styles.snsIcon}>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="32" height="32">
-                                <path d="M17 8h1a4 4 0 010 8h-1M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8zM6 2v3M10 2v3M14 2v3" />
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="32" height="32">
+                                <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                             </svg>
                         </div>
-                        <span className={styles.snsLabel}>Buy me a coffee</span>
-                        <span className={styles.snsHandle}>Support ☕</span>
-                    </a>
+                        <span className={styles.snsLabel}>{lang === 'ko' ? '방명록' : 'Guestbook'}</span>
+                        <span className={styles.snsHandle}>Any Comments?</span>
+                    </button>
                 </div>
             </div>
+
+            {showGuestbook && <GuestbookModal onClose={() => setShowGuestbook(false)} />}
         </section>
     );
 }

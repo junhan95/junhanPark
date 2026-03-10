@@ -1,0 +1,259 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: var(--bg-card, #1a1a1a);
+    border: 1px solid var(--bg-glass-border, #2a2a2a);
+    border-radius: var(--radius-lg, 16px);
+    padding: 40px 36px;
+    width: 94%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.title {
+    font-family: var(--font-heading, sans-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary, #fff);
+    margin: 0;
+    text-align: center;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field label {
+    font-size: 0.9rem;
+    color: var(--text-muted, #aaa);
+    font-weight: 500;
+}
+
+.field input {
+    background: var(--bg-primary, #111);
+    border: 1px solid var(--bg-glass-border, #333);
+    border-radius: 8px;
+    color: var(--text-primary, #fff);
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    width: 100%;
+    transition: border-color 0.2s;
+}
+
+.field input:focus {
+    outline: none;
+    border-color: var(--accent-cyan, #3399ff);
+}
+
+/* ── Toolbar ── */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px 10px;
+    background: var(--bg-primary, #111);
+    border: 1px solid var(--bg-glass-border, #333);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+}
+
+.toolBtn {
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: var(--text-muted, #aaa);
+    font-size: 0.85rem;
+    padding: 5px 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    font-family: inherit;
+    min-width: 30px;
+}
+
+.toolBtn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary, #fff);
+    border-color: var(--bg-glass-border, #333);
+}
+
+.toolBtn.active {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--accent-cyan, #3399ff);
+    border-color: var(--accent-cyan, #3399ff);
+}
+
+.divider {
+    width: 1px;
+    background: var(--bg-glass-border, #333);
+    margin: 2px 4px;
+    align-self: stretch;
+}
+
+.fontSizeSelect {
+    background: var(--bg-primary, #111);
+    border: 1px solid var(--bg-glass-border, #333);
+    border-radius: 4px;
+    color: var(--text-muted, #aaa);
+    font-size: 0.8rem;
+    padding: 4px 6px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.fontSizeSelect:focus {
+    outline: none;
+    border-color: var(--accent-cyan, #3399ff);
+}
+
+/* ── Editable Area ── */
+.editorWrap {
+    border: 1px solid var(--bg-glass-border, #333);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+}
+
+.editable {
+    background: var(--bg-primary, #111);
+    color: var(--text-primary, #fff);
+    padding: 14px 16px;
+    min-height: 240px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    line-height: 1.6;
+    outline: none;
+    overflow-y: auto;
+}
+
+.editable:empty::before {
+    content: attr(data-placeholder);
+    color: #555;
+}
+
+/* ── File Attach ── */
+.attachArea {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.attachItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--bg-glass-border, #333);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 0.82rem;
+    color: var(--text-muted, #aaa);
+}
+
+.attachRemove {
+    background: none;
+    border: none;
+    color: #ff6666;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0 2px;
+    font-family: inherit;
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.saveBtn {
+    padding: 11px 28px;
+    background: var(--accent-gradient, linear-gradient(135deg, #ff6666, #3399ff));
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.saveBtn:hover {
+    opacity: 0.85;
+}
+
+.saveBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cancelBtn {
+    padding: 11px 28px;
+    background: none;
+    border: 1px solid var(--bg-glass-border, #333);
+    border-radius: 8px;
+    color: var(--text-muted, #aaa);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cancelBtn:hover {
+    border-color: var(--accent-cyan, #3399ff);
+    color: var(--text-primary, #fff);
+}
+
+.success {
+    text-align: center;
+    color: #6fda6f;
+    font-size: 1rem;
+    padding: 40px 0;
+}
