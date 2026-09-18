@@ -48,7 +48,7 @@ function TimelineItem({ item, delay }) {
     return (
         <div className={`${styles.timelineItem} reveal ${delay > 0 ? `delay-${delay}` : ''}`} ref={ref}>
             <div className={styles.timelineDot}></div>
-            <div className={styles.timelineCard}>
+            <div className={`${styles.timelineCard} glass-card`}>
                 <span className={styles.timelineDate}>{item.period}</span>
                 <h3 className={styles.timelineRole}>{item.company}</h3>
                 <p className={styles.timelineRoleTitle}>{item.role}</p>

@@ -1,7 +1,6 @@
 .blog {
     background:
-        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(255, 102, 102, 0.05), transparent),
-        var(--bg-primary);
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(255, 102, 102, 0.05), transparent);
 }
 
 .grid {
@@ -26,8 +25,9 @@
 
 .card:hover {
     transform: translateY(-6px);
-    border-color: var(--accent-purple);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25), 0 0 32px var(--accent-glow);
+    border-color: var(--glass-border-hover);
+    background: var(--bg-card-hover);
+    box-shadow: var(--glass-shadow-hover), 0 0 32px var(--accent-glow), inset 0 1px 0 var(--glass-highlight);
 }
 
 .cardTop {

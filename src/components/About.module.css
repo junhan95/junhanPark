@@ -89,7 +89,7 @@
 
 .moreSection {
     padding: 28px;
-    background: var(--bg-glass);
+    background: var(--bg-card);
     border: 1px solid var(--bg-glass-border);
     border-radius: var(--radius-lg, 16px);
 }

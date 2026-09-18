@@ -6,10 +6,22 @@
   /* Dark Mode Palette */
   --bg-primary: #000000;
   --bg-secondary: #333333;
-  --bg-card: rgba(51, 51, 51, 0.85);
-  --bg-card-hover: rgba(68, 68, 68, 0.9);
+  --bg-card: var(--glass-bg);
+  --bg-card-hover: var(--glass-bg-hover);
   --bg-glass: rgba(255, 255, 255, 0.03);
-  --bg-glass-border: rgba(255, 255, 255, 0.15);
+  --bg-glass-border: var(--glass-border);
+  
+  /* Glass (Apple-style) */
+  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.08) 100%);
+  --glass-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.07) 45%, rgba(255, 255, 255, 0.12) 100%);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-border-hover: rgba(255, 255, 255, 0.34);
+  --glass-highlight: rgba(255, 255, 255, 0.38);
+  --glass-sheen: rgba(255, 255, 255, 0.16);
+  --glass-shadow: 0 10px 36px rgba(0, 0, 0, 0.45);
+  --glass-shadow-hover: 0 22px 60px rgba(0, 0, 0, 0.5);
+  --glass-blur: 16px;
+  --glass-saturate: 170%;
 
   --text-primary: #ffffff;
   --text-secondary: #cccccc;
@@ -54,10 +66,19 @@
   /* Light Mode Palette */
   --bg-primary: #ffffff;
   --bg-secondary: #f0f0f0;
-  --bg-card: rgba(255, 255, 255, 0.85);
-  --bg-card-hover: rgba(240, 240, 240, 0.95);
+  --bg-card: var(--glass-bg);
+  --bg-card-hover: var(--glass-bg-hover);
   --bg-glass: rgba(0, 0, 0, 0.03);
-  --bg-glass-border: rgba(0, 0, 0, 0.12);
+  --bg-glass-border: rgba(30, 40, 90, 0.12);
+  
+  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.5) 45%, rgba(255, 255, 255, 0.66) 100%);
+  --glass-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.66) 45%, rgba(255, 255, 255, 0.8) 100%);
+  --glass-border: rgba(30, 40, 90, 0.12);
+  --glass-border-hover: rgba(30, 40, 90, 0.22);
+  --glass-highlight: rgba(255, 255, 255, 0.95);
+  --glass-sheen: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 10px 36px rgba(30, 40, 90, 0.12), 0 0 0 1px rgba(30, 40, 90, 0.06);
+  --glass-shadow-hover: 0 22px 60px rgba(30, 40, 90, 0.18), 0 0 0 1px rgba(30, 40, 90, 0.08);
 
   --text-primary: #000000;
   --text-secondary: #333333;
@@ -430,5 +451,97 @@ button:focus-visible {
     width: 100%;
     justify-content: center;
     max-width: 280px;
+  }
+}
+/* ========================================
+   GLASS CARD (Apple-style liquid glass)
+   ======================================== */
+.glass-card {
+  position: relative;
+  isolation: isolate;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  box-shadow:
+    var(--glass-shadow),
+    inset 0 1px 0 var(--glass-highlight),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Specular sheen: light catching the top-left edge */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(140% 90% at 0% 0%, var(--glass-sheen) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Thin refractive rim along the edges */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.05) 35%,
+      rgba(255, 255, 255, 0.02) 65%,
+      rgba(255, 255, 255, 0.25) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+[data-theme="light"] .glass-card::after {
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.3) 35%,
+      rgba(255, 255, 255, 0.2) 65%,
+      rgba(255, 255, 255, 0.8) 100%);
+}
+
+/* Small glass chips (pills, tags) — lighter treatment */
+.glass-chip {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: blur(14px) saturate(var(--glass-saturate));
+  backdrop-filter: blur(14px) saturate(var(--glass-saturate));
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 var(--glass-highlight);
+}
+
+[data-theme="light"] .glass-chip {
+  box-shadow:
+    0 4px 16px rgba(30, 40, 90, 0.08),
+    inset 0 1px 0 var(--glass-highlight);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --glass-blur: 10px;
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root {
+    --glass-bg: linear-gradient(135deg, rgba(30, 32, 44, 0.92), rgba(18, 20, 30, 0.9));
+    --glass-bg-hover: linear-gradient(135deg, rgba(40, 42, 56, 0.94), rgba(26, 28, 40, 0.92));
+  }
+
+  [data-theme="light"] {
+    --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(245, 247, 252, 0.94));
+    --glass-bg-hover: #ffffff;
   }
 }

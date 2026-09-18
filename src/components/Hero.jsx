@@ -83,7 +83,7 @@ export default function Hero() {
 
                 <div className={`${styles.heroHighlights} animate-fade-up delay-3`}>
                     {t('hero.highlights').map((item, i) => (
-                        <div key={i} className={styles.heroHighlight}>
+                        <div key={i} className={`${styles.heroHighlight} glass-chip`}>
                             <span className={styles.heroHighlightIcon}>{item.icon}</span>
                             <span>{item.text}</span>
                         </div>

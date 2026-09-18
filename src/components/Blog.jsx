@@ -44,7 +44,7 @@ function BlogCard({ post, lang, delay, readLabel }) {
     return (
         <a
             href={`/blog/${post.id}`}
-            className={`${styles.card} reveal ${delay > 0 ? `delay-${delay}` : ''}`}
+            className={`${styles.card} glass-card reveal ${delay > 0 ? `delay-${delay}` : ''}`}
             ref={ref}
         >
             <div className={styles.cardTop}>

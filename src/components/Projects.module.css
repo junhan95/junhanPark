@@ -1,7 +1,6 @@
 .projects {
     background:
-        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(37, 99, 235, 0.06), transparent),
-        var(--bg-primary);
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(37, 99, 235, 0.06), transparent);
 }
 
 .projectsGrid {
@@ -21,10 +20,12 @@
 
 .projectCard:hover {
     transform: translateY(-8px);
-    border-color: rgba(124, 58, 237, 0.3);
+    border-color: var(--glass-border-hover);
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.3),
-        0 0 40px rgba(124, 58, 237, 0.1);
+        var(--glass-shadow-hover),
+        0 0 40px rgba(124, 58, 237, 0.12),
+        inset 0 1px 0 var(--glass-highlight);
+    background: var(--bg-card-hover);
 }
 
 .hidden {

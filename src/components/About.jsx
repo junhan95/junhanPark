@@ -45,7 +45,7 @@ export default function About() {
                 {showMore && (
                     <div className={styles.moreContent}>
                         {/* Core Expertise */}
-                        <div className={styles.moreSection}>
+                        <div className={`${styles.moreSection} glass-card`}>
                             <h3 className={styles.moreSectionTitle}>{t('about.expertise_title')}</h3>
                             <div className={styles.expertiseGrid}>
                                 {t('about.expertise_items').map((item, i) => (
@@ -55,7 +55,7 @@ export default function About() {
                         </div>
 
                         {/* Career */}
-                        <div className={styles.moreSection}>
+                        <div className={`${styles.moreSection} glass-card`}>
                             <h3 className={styles.moreSectionTitle}>{t('about.career_title')}</h3>
                             <div className={styles.careerList}>
                                 {t('about.career_items').map((item, i) => (
@@ -72,7 +72,7 @@ export default function About() {
                         </div>
 
                         {/* Education */}
-                        <div className={styles.moreSection}>
+                        <div className={`${styles.moreSection} glass-card`}>
                             <h3 className={styles.moreSectionTitle}>{t('about.education_title')}</h3>
                             {t('about.education_items').map((item, i) => (
                                 <div key={i} className={styles.eduItem}>
@@ -84,7 +84,7 @@ export default function About() {
                         </div>
 
                         {/* Interests */}
-                        <div className={styles.moreSection}>
+                        <div className={`${styles.moreSection} glass-card`}>
                             <h3 className={styles.moreSectionTitle}>{t('about.interests_title')}</h3>
                             <ul className={styles.interestList}>
                                 {t('about.interests_items').map((item, i) => (

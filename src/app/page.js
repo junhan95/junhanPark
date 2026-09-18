@@ -8,6 +8,7 @@ import Blog from '@/components/Blog';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ParticleCanvas from '@/components/ParticleCanvas';
+import SpaceBackground from '@/components/SpaceBackground';
 import ScrollProgress from '@/components/ScrollProgress';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <a href="#about" className="skip-nav">본문 바로가기</a>
       <ScrollProgress />
+      <SpaceBackground />
       <ParticleCanvas />
       <Navbar />
       <Hero />

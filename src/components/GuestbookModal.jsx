@@ -54,7 +54,7 @@ export default function GuestbookModal({ onClose }) {
 
     return (
         <div className={styles.overlay} onClick={onClose}>
-            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <div className={`${styles.modal} glass-card`} onClick={(e) => e.stopPropagation()}>
                 <h2 className={styles.title}>📝 {ko ? '방명록' : 'Guestbook'}</h2>
 
                 {success ? (

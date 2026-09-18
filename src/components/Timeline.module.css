@@ -1,7 +1,6 @@
 .timelineSection {
     background:
-        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(124, 58, 237, 0.06), transparent),
-        var(--bg-primary);
+        radial-gradient(ellipse 80% 40% at 50% 0%, rgba(124, 58, 237, 0.06), transparent);
 }
 
 .timeline {
@@ -47,12 +46,12 @@
     border-radius: var(--radius-md);
     padding: 28px 32px;
     transition: var(--transition-base);
-    backdrop-filter: blur(8px);
 }
 
 .timelineCard:hover {
     background: var(--bg-card-hover);
-    border-color: rgba(124, 58, 237, 0.2);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover), inset 0 1px 0 var(--glass-highlight);
     transform: translateX(8px);
 }
 

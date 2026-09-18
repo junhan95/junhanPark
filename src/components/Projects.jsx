@@ -89,7 +89,7 @@ function ProjectCard({ project, delay, t }) {
 
     return (
         <article
-            className={`${styles.projectCard} reveal ${delay > 0 ? `delay-${delay}` : ''}`}
+            className={`${styles.projectCard} glass-card reveal ${delay > 0 ? `delay-${delay}` : ''}`}
             ref={ref}
         >
             <div className={styles.imageWrapper}>
